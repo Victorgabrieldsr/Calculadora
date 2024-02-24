@@ -1,0 +1,50 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(52, 55, 61);
+    font-family: Arial, Helvetica, sans-serif;
+}
+main{
+    margin: 3rem;
+    width: 25vw;
+    height: 35vw;
+    background-color: white;
+}
+
+#caixaPrincipal{
+    position: relative;
+    width: 100%;
+    height: 18%;
+    background-color: rgb(155, 155, 165);
+    
+}
+#exibir{
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    font-weight: bolder;
+    font-size: 3rem;
+}
+
+.caixaHorizontal{
+    margin-top: 0.2rem;
+    width: 100%;
+    height: 13%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.caixaHorizontal button{
+    width: 22%;
+    height: 80%;
+    margin: 0.1rem;
+    background-color: white;
+    border-color: rgb(7, 7, 7);
+    border-radius: 10px;
+}
+.caixaHorizontal button:hover{
+    cursor: pointer;
+}

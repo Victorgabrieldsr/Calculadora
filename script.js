@@ -5,7 +5,7 @@ let exibir = document.querySelector("#exibir");
 let acumulador = "";
 let resultado = 0;
 let salvarClick;
-let verificar = false;
+let verificar = true;
 
 const um = document.querySelector("#um");
 const dois = document.querySelector("#dois");
@@ -84,29 +84,32 @@ igual.addEventListener("click", e =>{
    if(salvarClick === "soma"){   
          if(acumulador){
          resultado = resultado + parseInt(acumulador)
-         }
-          verificar = true;
-          exibir.innerHTML = resultado;    
+         acumulador = "";
+         salvarClick = "";
+         exibir.innerHTML = resultado;          
+      }
    }
    else if(salvarClick === "sub"){   
          if(acumulador){
          resultado = resultado - parseInt(acumulador)
+         acumulador = "";
+         salvarClick = "";
+         exibir.innerHTML = resultado;         
          }
-          verificar = true;
-          exibir.innerHTML = resultado;         
+         
    }
    else if(salvarClick === "mult"){   
          if(acumulador){
          resultado = resultado * parseInt(acumulador)
          }
-          verificar = true;
+      
           exibir.innerHTML = resultado;         
    }
    else if(salvarClick === "div"){   
          if(acumulador){
          resultado = resultado / parseInt(acumulador)
          }
-          verificar = true;
+
           exibir.innerHTML = resultado;         
    }
 });
@@ -121,49 +124,45 @@ apagar.addEventListener("click",e =>{
 });
 
 soma.addEventListener("click", e =>{
-   if(verificar === false){
    if(acumulador){
    resultado = resultado + parseInt(acumulador)
-   }
    salvarClick = "soma";
-    acumulador = "";
-    console.log(resultado);
-    exibir.innerHTML = resultado;
+   acumulador = "";
+   exibir.innerHTML = resultado;
    }
 });
 
-sub.addEventListener("click", e =>{
-   if(verificar === false){
-   if(acumulador){
-   resultado = resultado + parseInt(acumulador)
-   }
-    salvarClick = "sub";
-    acumulador = "";
-    console.log(resultado);
-    exibir.innerHTML = resultado;
+sub.addEventListener("click", e => {
+   console.log("acumulador:" + acumulador);
+   if (acumulador) {
+      if (verificar) {
+         resultado += parseInt(acumulador);
+         console.log("primeiro!");
+      } else {
+         resultado -= parseInt(acumulador);
+         console.log("segundo");
+      }
+      salvarClick = "sub";
+      acumulador = "";
+      exibir.innerHTML = resultado;
    }
 });
+
 
 mult.addEventListener("click", e =>{ 
-   if(verificar === false){
    if(acumulador){
    resultado = resultado + parseInt(acumulador)
-   }
-    salvarClick = "mult";
-    acumulador = "";
-    console.log(resultado);
-    exibir.innerHTML = resultado;
+   salvarClick = "mult";
+   acumulador = "";
+   exibir.innerHTML = resultado;
    }
 });
 
 div.addEventListener("click", e =>{
-   if(verificar === false){
    if(acumulador){
    resultado = resultado + parseInt(acumulador)
-   }
-    salvarClick = "div";
-    acumulador = "";
-    console.log(resultado);
-    exibir.innerHTML = resultado;
+   salvarClick = "div";
+   acumulador = "";
+   exibir.innerHTML = resultado;
    }
 });

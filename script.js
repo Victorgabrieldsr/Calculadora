@@ -5,6 +5,7 @@ let exibir = document.querySelector("#exibir");
 let acumulador = "";
 let resultado = 0;
 let salvarClick = "";
+let verificarVirugla = true;
 
 const um = document.querySelector("#um");
 const dois = document.querySelector("#dois");
@@ -25,6 +26,7 @@ const igual = document.querySelector("#igual");
 const apagar = document.querySelector("#apagar");
 const C = document.querySelector("#C");
 const CE = document.querySelector("#CE");
+const virgula = document.querySelector("#virgula");
 
 zero.addEventListener("click", e =>{
         acumulador = acumulador + "0";
@@ -95,12 +97,9 @@ apagar.addEventListener("click",e =>{
 });
 
 igual.addEventListener("click", e =>{
-
    if(salvarClick === "soma"){
          if(acumulador){
-         resultado = resultado + parseInt(acumulador);
-         console.log(acumulador);
-         console.log("--------------");
+         resultado = resultado + parseFloat(acumulador);
          acumulador = "";
          salvarClick = "";
          exibir.innerHTML = resultado; 
@@ -109,8 +108,6 @@ igual.addEventListener("click", e =>{
       else if(salvarClick === "sub"){  
             if(acumulador){
             resultado = resultado - parseInt(acumulador);
-            console.log(acumulador);
-            console.log("--------------");
             acumulador = "";
             salvarClick = "";
             exibir.innerHTML = resultado;         
@@ -119,8 +116,6 @@ igual.addEventListener("click", e =>{
       else if(salvarClick === "mult"){ 
             if(acumulador){
             resultado = resultado * parseInt(acumulador);
-            console.log(acumulador);
-            console.log("--------------");
             acumulador = "";
             salvarClick = "";
             exibir.innerHTML = resultado;         
@@ -129,105 +124,114 @@ igual.addEventListener("click", e =>{
       else if(salvarClick === "div"){ 
             if(acumulador){
             resultado = resultado / parseInt(acumulador);
-            console.log(acumulador);
-            console.log("--------------");
             acumulador = "";
             salvarClick = "";
             exibir.innerHTML = resultado;         
             }
       }
- 
-         
-
 });
 
 
- 
 
-   soma.addEventListener("click", e =>{
- 
-       if((resultado) && (acumulador)){
-         console.log(acumulador);
-         console.log("--novo-if--");
-         salvarClick = "soma";
-      }else if((salvarClick !== "soma")){
-         salvarClick = "soma";
-         if(acumulador){
-            resultado = resultado + parseInt(acumulador);
-            console.log(acumulador);
-            console.log("--------------");
-            acumulador = "";
-         }
-         else if((acumulador === "") && (resultado)){
-            console.log(acumulador);
-            console.log("--else if--");
-            acumulador = "";
-         }  
-      }
-   });
 
-sub.addEventListener("click", e => {
-    
-      if((resultado) && (acumulador)){
-         console.log(acumulador);
-         console.log("--novo-if--");
-         salvarClick = "sub";
-      }else if((salvarClick !== "sub")){
-      salvarClick = "sub";
-      if(acumulador){
-         resultado = resultado + parseInt(acumulador);
-         console.log(acumulador);
-         console.log("--------------");
-         acumulador = "";
-      }
-      else if((acumulador === "") && (resultado)){
-         console.log(acumulador);
-         console.log("--else if--");
-         acumulador = "";
+document.addEventListener('keydown', function(event)  {
+  if (event.key >= '0' && event.key <= '9') {
+   acumulador = acumulador + event.key;
+   exibir.innerHTML = acumulador;
+  }
+  else if(event.key = '+'){
+   salvarClick = "soma";
+   console.log(event.key);
+   }
+  else if(event.key = '-'){
+   salvarClick = "sub";
+   }
+  else if(event.key = '*'){
+   salvarClick = "mult";
+   }
+  else if(event.key = '/'){
+   salvarClick = "div";
+   }
+   else if(event.key = ','){
+      acumulador = acumulador + ".";
+      exibir.innerHTML = acumulador;
+   }
+   if(event.key === ','){
+      if(verificarVirugla === true){
+         acumulador = acumulador + "."
+         exibir.innerHTML = acumulador;
+         verificarVirugla = false;
       }
    }
 });
 
+virgula.addEventListener("click",e =>{
+   if(verificarVirugla === true){
+      acumulador = acumulador + "."
+      exibir.innerHTML = acumulador;
+      verificarVirugla = false;
+   }
+});
 
-mult.addEventListener("click", e =>{ 
-
+soma.addEventListener("click", e =>{
       if((resultado) && (acumulador)){
-         console.log(acumulador);
-         console.log("--novo-if--");
-         salvarClick = "mult";
-      }else if((salvarClick !== "mult")){
-      salvarClick = "mult";
+         salvarClick = "soma";
+         verificarVirugla = true;
+      }else if((salvarClick !== "soma")){
+         salvarClick = "soma";
+         verificarVirugla = true;
       if(acumulador){
+         resultado = resultado + parseFloat(acumulador);
+         acumulador = "";
+         verificarVirugla = true;
+      }
+         else if((acumulador === "") && (resultado)){
+         acumulador = "";
+         verificarVirugla = true;
+      }  
+   }
+});
+
+sub.addEventListener("click", e => {   
+   if((resultado) && (acumulador)){
+         salvarClick = "sub";
+   }else if((salvarClick !== "sub")){
+      salvarClick = "sub";
+   if(acumulador){
          resultado = resultado + parseInt(acumulador);
-         console.log(acumulador);
-         console.log("--------------");
          acumulador = "";
       }
-      else if((acumulador === "") && (resultado)){
-         console.log(acumulador);
-         console.log("--else if--");
+   else if((acumulador === "") && (resultado)){
+         acumulador = "";
+      }
+    }
+});
+
+mult.addEventListener("click", e =>{ 
+   if((resultado) && (acumulador)){
+         salvarClick = "mult";
+   }else if((salvarClick !== "mult")){
+      salvarClick = "mult";
+   if(acumulador){
+         resultado = resultado + parseInt(acumulador);
+         acumulador = "";
+      }
+   else if((acumulador === "") && (resultado)){
          acumulador = "";
       }
    }
 });
 
 div.addEventListener("click", e =>{ 
-
-      if((resultado) && (acumulador)){
-         console.log(acumulador);
-         console.log("--novo-if--");
+   if((resultado) && (acumulador)){
          salvarClick = "div";
-      }else if((salvarClick !== "div")){
+   }else if((salvarClick !== "div")){
       salvarClick = "div";
-      if(acumulador){
+   if(acumulador){
          resultado = resultado + parseInt(acumulador);
-         console.log(acumulador);
-         console.log("--------------");
          acumulador = "";
-      }
-      else if((acumulador === "") && (resultado)){
-         console.log(acumulador);
-         console.log("--else if--");
+   }
+   else if((acumulador === "") && (resultado)){
          acumulador = "";
       }
    }

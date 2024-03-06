@@ -27,46 +27,101 @@ const apagar = document.querySelector("#apagar");
 const C = document.querySelector("#C");
 const CE = document.querySelector("#CE");
 const virgula = document.querySelector("#virgula");
+const porcentagem = document.querySelector("#porcentagem");
 
 zero.addEventListener("click", e =>{
         acumulador = acumulador + "0";
-        exibir.innerHTML= acumulador
+        exibir.innerHTML= acumulador;
 });
 um.addEventListener("click", e =>{ 
+   if((salvarClick === "") && (resultado)){
+      resultado = 0;
+      acumulador = acumulador + "1";
+      exibir.innerHTML= acumulador;
+   }else{
    acumulador = acumulador + "1";
-   exibir.innerHTML= acumulador
+   exibir.innerHTML= acumulador;
+   }
 });
 dois.addEventListener("click", e =>{ 
+   if((salvarClick === "") && (resultado)){
+      resultado = 0;
+      acumulador = acumulador + "2";
+      exibir.innerHTML= acumulador;
+   }else{
    acumulador = acumulador + "2";
-   exibir.innerHTML= acumulador
+   exibir.innerHTML= acumulador;
+   }
 });
 tres.addEventListener("click", e =>{ 
+   if((salvarClick === "") && (resultado)){
+      resultado = 0;
+      acumulador = acumulador + "3";
+      exibir.innerHTML= acumulador;
+   }else{
    acumulador = acumulador + "3";
-   exibir.innerHTML= acumulador
+   exibir.innerHTML= acumulador;
+   }
 });
 quatro.addEventListener("click", e =>{ 
+   if((salvarClick === "") && (resultado)){
+      resultado = 0;
+      acumulador = acumulador + "4";
+      exibir.innerHTML= acumulador;
+   }else{
    acumulador = acumulador + "4";
-   exibir.innerHTML= acumulador
+   exibir.innerHTML= acumulador;
+   }
 });
 cinco.addEventListener("click", e =>{ 
+   if((salvarClick === "") && (resultado)){
+      resultado = 0;
+      acumulador = acumulador + "5";
+      exibir.innerHTML= acumulador;
+   }else{
    acumulador = acumulador + "5";
-   exibir.innerHTML= acumulador
+   exibir.innerHTML= acumulador;
+   }
 });
 seis.addEventListener("click", e =>{
+   if((salvarClick === "") && (resultado)){
+      resultado = 0;
+      acumulador = acumulador + "6";
+      exibir.innerHTML= acumulador;
+   }else{
    acumulador = acumulador + "6";
-   exibir.innerHTML= acumulador
+   exibir.innerHTML= acumulador;
+   }
 });
 sete.addEventListener("click", e =>{ 
+   if((salvarClick === "") && (resultado)){
+      resultado = 0;
+      acumulador = acumulador + "7";
+      exibir.innerHTML= acumulador;
+   }else{
    acumulador = acumulador + "7";
-   exibir.innerHTML= acumulador
+   exibir.innerHTML= acumulador;
+   }
 });
 oito.addEventListener("click", e =>{  
+   if((salvarClick === "") && (resultado)){
+      resultado = 0;
+      acumulador = acumulador + "8";
+      exibir.innerHTML= acumulador;
+   }else{
    acumulador = acumulador + "8";
-   exibir.innerHTML= acumulador
+   exibir.innerHTML= acumulador;
+   }
 });
 nove.addEventListener("click", e =>{ 
+   if((salvarClick === "") && (resultado)){
+      resultado = 0;
+      acumulador = acumulador + "9";
+      exibir.innerHTML= acumulador;
+   }else{
    acumulador = acumulador + "9";
-   exibir.innerHTML= acumulador
+   exibir.innerHTML= acumulador;
+   }
 });
 
 if(acumulador === ""){
@@ -80,12 +135,14 @@ C.addEventListener("click", e =>{
    exibir.innerHTML = "0";
 });
 
-CE.addEventListener("click", e =>{
-acumulador = "";
-exibir.innerHTML = "0";
-});
+CE.addEventListener("click", CEFunction());
+function CEFunction(){
+   acumulador = "";
+   exibir.innerHTML = "0";
+}
 
-apagar.addEventListener("click",e =>{
+apagar.addEventListener("click", apagarFunction());
+function apagarFunction(){
    if (acumulador.length > 0) {
       acumulador = acumulador.slice(0, -1);
       if(acumulador){
@@ -94,146 +151,183 @@ apagar.addEventListener("click",e =>{
          exibir.innerHTML = "0";
       }
    }
-});
+}
 
-igual.addEventListener("click", e =>{
+igual.addEventListener("click", igualFunction);
+function igualFunction(){
    if(salvarClick === "soma"){
+      if(acumulador){
+      resultado = resultado + parseFloat(acumulador);
+      acumulador = "";
+      salvarClick = "";
+      exibir.innerHTML = resultado; 
+      }
+}   
+   else if(salvarClick === "sub"){  
          if(acumulador){
-         resultado = resultado + parseFloat(acumulador);
+         resultado = resultado - parseInt(acumulador);
          acumulador = "";
          salvarClick = "";
-         exibir.innerHTML = resultado; 
+         exibir.innerHTML = resultado;         
          }
-   }   
-      else if(salvarClick === "sub"){  
-            if(acumulador){
-            resultado = resultado - parseInt(acumulador);
-            acumulador = "";
-            salvarClick = "";
-            exibir.innerHTML = resultado;         
-            }
-      }
-      else if(salvarClick === "mult"){ 
-            if(acumulador){
-            resultado = resultado * parseInt(acumulador);
-            acumulador = "";
-            salvarClick = "";
-            exibir.innerHTML = resultado;         
-            }
-      }
-      else if(salvarClick === "div"){ 
-            if(acumulador){
-            resultado = resultado / parseInt(acumulador);
-            acumulador = "";
-            salvarClick = "";
-            exibir.innerHTML = resultado;         
-            }
-      }
-});
+   }
+   else if(salvarClick === "mult"){ 
+         if(acumulador){
+         resultado = resultado * parseInt(acumulador);
+         acumulador = "";
+         salvarClick = "";
+         exibir.innerHTML = resultado;         
+         }
+   }
+   else if(salvarClick === "div"){ 
+         if(acumulador){
+         resultado = resultado / parseInt(acumulador);
+         acumulador = "";
+         salvarClick = "";
+         exibir.innerHTML = resultado;         
+         }
+   }
+}
 
-
-
-
-document.addEventListener('keydown', function(event)  {
-  if (event.key >= '0' && event.key <= '9') {
-   acumulador = acumulador + event.key;
-   exibir.innerHTML = acumulador;
-  }
-  else if(event.key = '+'){
-   salvarClick = "soma";
+document.addEventListener('keydown', function(event){
    console.log(event.key);
-   }
-  else if(event.key = '-'){
-   salvarClick = "sub";
-   }
-  else if(event.key = '*'){
-   salvarClick = "mult";
-   }
-  else if(event.key = '/'){
-   salvarClick = "div";
-   }
-   else if(event.key = ','){
-      acumulador = acumulador + ".";
+  if (event.key >= '0' && event.key <= '9') {
+   if((salvarClick === "") && (resultado)){
+      resultado = 0;
+      acumulador = acumulador + event.key;
+      exibir.innerHTML = acumulador;
+   }else{
+      acumulador = acumulador + event.key;
       exibir.innerHTML = acumulador;
    }
-   if(event.key === ','){
+
+  }
+   else if(event.key === '+'){
+   somaFunction();
+   }
+   else if(event.key === '-'){
+   subFunction();
+   }
+   else if(event.key === '*'){
+   multFunction();
+   }
+   else if(event.key === '/'){
+   divFunction();
+   }
+   else if(event.key === ','){
       if(verificarVirugla === true){
+         if(acumulador === ""){
+            acumulador = "0" + ".";
+            exibir.innerHTML = acumulador;
+            verificarVirugla = false;
+         }else{
          acumulador = acumulador + "."
          exibir.innerHTML = acumulador;
-         verificarVirugla = false;
+         verificarVirugla = false;''
+         }
       }
+   }
+   else if(event.key === 'Enter'){
+     igualFunction();
+   }
+   else if(event.key === 'Delete'){
+      CEFunction();
+   }
+   else if(event.key === 'Backspace'){
+      apagarFunction();
    }
 });
 
-virgula.addEventListener("click",e =>{
+virgula.addEventListener("click", e =>{
    if(verificarVirugla === true){
+      if(acumulador === ""){
+         acumulador = "0" + ".";
+         exibir.innerHTML = acumulador;
+         verificarVirugla = false;
+      }else{
       acumulador = acumulador + "."
       exibir.innerHTML = acumulador;
       verificarVirugla = false;
-   }
-});
-
-soma.addEventListener("click", e =>{
-      if((resultado) && (acumulador)){
-         salvarClick = "soma";
-         verificarVirugla = true;
-      }else if((salvarClick !== "soma")){
-         salvarClick = "soma";
-         verificarVirugla = true;
-      if(acumulador){
-         resultado = resultado + parseFloat(acumulador);
-         acumulador = "";
-         verificarVirugla = true;
       }
-         else if((acumulador === "") && (resultado)){
-         acumulador = "";
-         verificarVirugla = true;
-      }  
    }
 });
 
-sub.addEventListener("click", e => {   
+soma.addEventListener("click", somaFunction);
+function somaFunction(){
    if((resultado) && (acumulador)){
-         salvarClick = "sub";
-   }else if((salvarClick !== "sub")){
+      salvarClick = "soma";
+      verificarVirugla = true;
+   }else if((salvarClick !== "soma")){
+      salvarClick = "soma";
+      verificarVirugla = true;
+   if(acumulador){
+      resultado = resultado + parseFloat(acumulador);
+      acumulador = "";
+      verificarVirugla = true;
+   }
+      else if((acumulador === "") && (resultado)){
+      acumulador = "";
+      verificarVirugla = true;
+   }  
+}
+}
+
+sub.addEventListener("click", subFunction);
+function subFunction(){
+   if((resultado) && (acumulador)){
       salvarClick = "sub";
-   if(acumulador){
-         resultado = resultado + parseInt(acumulador);
-         acumulador = "";
-      }
-   else if((acumulador === "") && (resultado)){
-         acumulador = "";
-      }
-    }
-});
+      verificarVirugla = true;
+}else if((salvarClick !== "sub")){
+   salvarClick = "sub";
+   verificarVirugla = true;
+if(acumulador){
+      resultado = resultado + parseInt(acumulador);
+      acumulador = "";
+      verificarVirugla = true;
+   }
+else if((acumulador === "") && (resultado)){
+      acumulador = "";
+      verificarVirugla = true;
+   }
+ }
+}
 
-mult.addEventListener("click", e =>{ 
+mult.addEventListener("click", multFunction);
+function multFunction(){
    if((resultado) && (acumulador)){
-         salvarClick = "mult";
-   }else if((salvarClick !== "mult")){
       salvarClick = "mult";
-   if(acumulador){
-         resultado = resultado + parseInt(acumulador);
-         acumulador = "";
-      }
-   else if((acumulador === "") && (resultado)){
-         acumulador = "";
-      }
+      verificarVirugla = true;
+}else if((salvarClick !== "mult")){
+   salvarClick = "mult";
+   verificarVirugla = true;
+if(acumulador){
+      resultado = resultado + parseInt(acumulador);
+      acumulador = "";
+      verificarVirugla = true;
    }
-});
+else if((acumulador === "") && (resultado)){
+      acumulador = "";
+      verificarVirugla = true;
+   }
+}
+}
 
-div.addEventListener("click", e =>{ 
+div.addEventListener("click", divFunction);
+function divFunction(){
    if((resultado) && (acumulador)){
-         salvarClick = "div";
-   }else if((salvarClick !== "div")){
       salvarClick = "div";
-   if(acumulador){
-         resultado = resultado + parseInt(acumulador);
-         acumulador = "";
+      verificarVirugla = true;
+}else if((salvarClick !== "div")){
+   salvarClick = "div";
+   verificarVirugla = true;
+if(acumulador){
+      resultado = resultado + parseInt(acumulador);
+      acumulador = "";
+      verificarVirugla = true;
+}
+else if((acumulador === "") && (resultado)){
+      acumulador = "";
+      verificarVirugla = true;
    }
-   else if((acumulador === "") && (resultado)){
-         acumulador = "";
-      }
-   }
-});
-
+}
+}

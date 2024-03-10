@@ -7,7 +7,7 @@ let resultado = 0;
 let salvarClick = "";
 let verificarVirugla = true;
 let verificarEnter = "";
-
+let VerificarSinal = "";
 let num1 = 0;
 let num2 = 0;
 
@@ -150,6 +150,7 @@ C.addEventListener("click", e =>{
    exibirSecundario1.innerHTML = "";
    exibirSecundario2.innerHTML = "";
    sinal.innerHTML = "";
+   VerificarSinal = "";
 });
 
 CE.addEventListener("click", CEFunction);
@@ -162,6 +163,10 @@ function CEFunction(){
    exibirSecundario1.innerHTML = "";
    exibirSecundario2.innerHTML = "";
    sinal.innerHTML = "";
+   VerificarSinal = "";
+   salvarClick = "";
+   verificarEnter = "";
+   resultado = 0;
 }
 
 apagar.addEventListener("click", apagarFunction);
@@ -196,10 +201,12 @@ function apagarFunction(){
 
 igual.addEventListener("click", igualFunction);
 function igualFunction(){
-   if(acumulador !== ""){
+   if( (acumulador !== "") && ((VerificarSinal === "+") || (VerificarSinal === "-") || (VerificarSinal === "*") || (VerificarSinal === "/") ) ){
       num2 = num2 + parseFloat(acumulador);
       exibirSecundario2.innerHTML = num2;
       igualSecundario.style.visibility = "visible";
+      console.log(acumulador);
+      console.log(VerificarSinal);
    }
    if(salvarClick === "soma"){
       if(acumulador){
@@ -210,7 +217,17 @@ function igualFunction(){
       igualSecundario.style.visibility = "visible";
       verificarEnter = "soma";
       }
-}   
+      ////////////////////////////////////////////////////////////////////////////////////////////////
+   } else if(salvarClick === "soma2"){
+      resultado = Number(resultado) + Number(acumulador);
+      num2 = parseFloat(acumulador);
+      exibirSecundario2.innerHTML = num2;
+      exibir.innerHTML = resultado;
+      acumulador = "";
+      salvarClick = "";
+      igualSecundario.style.visibility = "visible";
+      verificarEnter = "soma";
+   }   
    else if(salvarClick === "sub"){  
          if(acumulador){
          resultado = resultado - parseInt(acumulador);
@@ -249,8 +266,6 @@ function igualFunction(){
             resultado = resultado + num2;
             resultado = resultado.toString();
             exibir.innerHTML = resultado.replace(".", ","); 
-            console.log(typeof resultado);
-            console.log(resultado);
       }
       else if(verificarEnter === "sub"){  
          num1 = num1 - num2;
@@ -346,7 +361,7 @@ virgula.addEventListener("click", e =>{
 
 
 
-//////////////////////////////////////////////////////////////////////////
+
 
 //colocar comentario quando terminar tudo!
 
@@ -357,21 +372,28 @@ function somaFunction(){
       salvarClick = "soma";
       verificarVirugla = true;
       num1 = num1 + parseFloat(acumulador);
-     exibirSecundario1.innerHTML = num1;
-     sinal.innerHTML = "+";
+      exibirSecundario1.innerHTML = num1;
+      sinal.innerHTML = "+";
+      VerificarSinal = "+";
    }
    else if((salvarClick !== "soma")){
+   if(acumulador){
       salvarClick = "soma";
-      verificarVirugla = true;
       num1 = num1 + parseFloat(acumulador);
       exibirSecundario1.innerHTML = num1;
       sinal.innerHTML = "+";
-   if(acumulador){
+      VerificarSinal = "+";
       resultado = resultado + parseFloat(acumulador);
       acumulador = "";
       verificarVirugla = true;
    }
    else if((acumulador === "") && (resultado)){
+      salvarClick = "soma2";
+      acumulador = resultado;
+      num1 = num1 + parseFloat(acumulador);
+      exibirSecundario1.innerHTML = num1;
+      sinal.innerHTML = "+";
+      VerificarSinal = "+";
       acumulador = "";
       verificarVirugla = true;
    }  
@@ -386,21 +408,28 @@ function subFunction(){
       num1 = num1 + parseFloat(acumulador);
       exibirSecundario1.innerHTML = num1;
       sinal.innerHTML = "-";
+      VerificarSinal = "-";
    }
    else if((salvarClick !== "sub")){
-      salvarClick = "sub";
-      verificarVirugla = true;
-      num1 = num1 + parseFloat(acumulador);
-      exibirSecundario1.innerHTML = num1;
-      sinal.innerHTML = "-";
    if(acumulador){
+         salvarClick = "sub";
+         num1 = num1 + parseFloat(acumulador);
+         exibirSecundario1.innerHTML = num1;
+         sinal.innerHTML = "-";
+         VerificarSinal = "-";
          resultado = resultado + parseInt(acumulador);
          acumulador = "";
          verificarVirugla = true;
       }
    else if((acumulador === "") && (resultado)){
-         acumulador = "";
-         verificarVirugla = true;
+      salvarClick = "sub2";
+      acumulador = resultado;
+      num1 = num1 + parseFloat(acumulador);
+      exibirSecundario1.innerHTML = num1;
+      sinal.innerHTML = "-";
+      VerificarSinal = "-";
+      acumulador = "";
+      verificarVirugla = true;
       }
    }
 }
@@ -415,17 +444,23 @@ function multFunction(){
       sinal.innerHTML = "×";
    }
    else if((salvarClick !== "mult")){
+   if(acumulador){
       salvarClick = "mult";
-      verificarVirugla = true;
       num1 = num1 + parseFloat(acumulador);
       exibirSecundario1.innerHTML = num1;
       sinal.innerHTML = "×";
-   if(acumulador){
+      VerificarSinal = "*"
       resultado = resultado + parseInt(acumulador);
       acumulador = "";
       verificarVirugla = true;
    }
    else if((acumulador === "") && (resultado)){
+      salvarClick = "mult2";
+      acumulador = resultado;
+      num1 = num1 + parseFloat(acumulador);
+      exibirSecundario1.innerHTML = num1;
+      sinal.innerHTML = "×";
+      VerificarSinal = "*";
       acumulador = "";
       verificarVirugla = true;
    }
@@ -440,20 +475,27 @@ function divFunction(){
       num1 = num1 + parseFloat(acumulador);
       exibirSecundario1.innerHTML = num1;
       sinal.innerHTML = "÷";
-}else if((salvarClick !== "div")){
-   salvarClick = "div";
-   verificarVirugla = true;
-   num1 = num1 + parseFloat(acumulador);
-      exibirSecundario1.innerHTML = num1;
-      sinal.innerHTML = "÷";
-if(acumulador){
-      resultado = resultado + parseInt(acumulador);
-      acumulador = "";
-      verificarVirugla = true;
-}
-else if((acumulador === "") && (resultado)){
-      acumulador = "";
-      verificarVirugla = true;
    }
-}
+   else if((salvarClick !== "div")){
+   if(acumulador){
+         salvarClick = "div";
+         num1 = num1 + parseFloat(acumulador);
+         exibirSecundario1.innerHTML = num1;
+         sinal.innerHTML = "÷";
+         VerificarSinal = "/";
+         resultado = resultado + parseInt(acumulador);
+         acumulador = "";
+         verificarVirugla = true;
+   }
+   else if((acumulador === "") && (resultado)){
+         salvarClick = "div2";
+         acumulador = resultado;
+         num1 = num1 + parseFloat(acumulador);
+         exibirSecundario1.innerHTML = num1;
+         sinal.innerHTML = "÷";
+         VerificarSinal = "/";
+         acumulador = "";
+         verificarVirugla = true;
+      }
+   }
 }

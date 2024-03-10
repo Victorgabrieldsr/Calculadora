@@ -238,6 +238,16 @@ function igualFunction(){
          verificarEnter = "sub";     
          }
    }
+   else if(salvarClick === "sub2"){
+      resultado = Number(resultado) - Number(acumulador);
+      num2 = parseFloat(acumulador);
+      exibirSecundario2.innerHTML = num2;
+      exibir.innerHTML = resultado;
+      acumulador = "";
+      salvarClick = "";
+      igualSecundario.style.visibility = "visible";
+      verificarEnter = "sub";
+   }   
    else if(salvarClick === "mult"){ 
          if(acumulador){
          resultado = resultado * parseInt(acumulador);
@@ -248,6 +258,16 @@ function igualFunction(){
          verificarEnter = "mult";       
          }
    }
+   else if(salvarClick === "mult2"){
+      resultado = Number(resultado) * Number(acumulador);
+      num2 = parseFloat(acumulador);
+      exibirSecundario2.innerHTML = num2;
+      exibir.innerHTML = resultado;
+      acumulador = "";
+      salvarClick = "";
+      igualSecundario.style.visibility = "visible";
+      verificarEnter = "mult";
+   }   
    else if(salvarClick === "div"){ 
          if(acumulador){
          resultado = resultado / parseInt(acumulador);
@@ -258,6 +278,16 @@ function igualFunction(){
          verificarEnter = "div";          
          }
    }
+   else if(salvarClick === "div2"){
+      resultado = Number(resultado) / Number(acumulador);
+      num2 = parseFloat(acumulador);
+      exibirSecundario2.innerHTML = num2;
+      exibir.innerHTML = resultado;
+      acumulador = "";
+      salvarClick = "";
+      igualSecundario.style.visibility = "visible";
+      verificarEnter = "div";
+   }   
    else if(salvarClick === ""){
       if(verificarEnter === "soma"){  
             resultado = Number(resultado);   
@@ -268,22 +298,28 @@ function igualFunction(){
             exibir.innerHTML = resultado.replace(".", ","); 
       }
       else if(verificarEnter === "sub"){  
+         resultado = Number(resultado);   
          num1 = num1 - num2;
          exibirSecundario1.innerHTML = num1;
          resultado = resultado - num2;
-         exibir.innerHTML = resultado;
+         resultado = resultado.toString();
+         exibir.innerHTML = resultado.replace(".", ","); 
       }
       else if(verificarEnter === "mult"){
+         resultado = Number(resultado);   
          num1 = num1 * num2;
          exibirSecundario1.innerHTML = num1;
-         resultado = resultado * num2;
-         exibir.innerHTML = resultado;
+         resultado = resultado - num2;
+         resultado = resultado.toString();
+         exibir.innerHTML = resultado.replace(".", ","); 
       }
       else if(verificarEnter === "div"){
+         resultado = Number(resultado);   
          num1 = num1 / num2;
          exibirSecundario1.innerHTML = num1;
          resultado = resultado / num2;
-         exibir.innerHTML = resultado;
+         resultado = resultado.toString();
+         exibir.innerHTML = resultado.replace(".", ","); 
       }
    }
 }

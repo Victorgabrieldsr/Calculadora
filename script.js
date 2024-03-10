@@ -39,6 +39,21 @@ let exibirSecundario2 = document.querySelector("#exibirSecundario2");
 let sinal = document.querySelector("#sinal");
 const igualSecundario = document.querySelector("#igualSecundario");
 
+class VerificarToFixedClass{
+      verificarNumero(numero){
+         numero = Number(numero);
+         if(numero.toFixed(2).endsWith("0")){
+            numero = numero.toFixed(1);
+         }else{
+            numero = numero.toFixed(2);
+         }
+         numero = String(numero);
+         return numero;
+      }
+}
+let verificarToFixedClass = new VerificarToFixedClass();
+
+
 zero.addEventListener("click", e =>{
       acumulador = acumulador + "0";
       exibir.innerHTML= acumulador;
@@ -185,7 +200,7 @@ function apagarFunction(){
       exibirSecundario2.innerHTML = "";
       sinal.innerHTML = "";
       if(acumulador){
-         exibir.innerHTML = acumulador;
+         exibir.innerHTML = acumulador.replace(".",",");
       }else{
          exibir.innerHTML = "0";
       }
@@ -216,7 +231,7 @@ function igualFunction(){
       resultado = resultado + Number(acumulador);
       acumulador = "";
       salvarClick = "";
-      resultado = resultado.toString();
+      resultado = verificarToFixedClass.verificarNumero(resultado);
       exibir.innerHTML = resultado.replace(".", ",");
       igualSecundario.style.visibility = "visible";
       verificarEnter = "soma";
@@ -225,7 +240,7 @@ function igualFunction(){
    } else if(salvarClick === "soma2"){
       resultado = Number(resultado) + Number(acumulador);
       num2 = Number(acumulador);
-      num2 = String(num2);
+      num2 = verificarToFixedClass.verificarNumero(num2);
       exibirSecundario2.innerHTML = num2.replace(".",",");
       resultado = resultado.toString();
       exibir.innerHTML = resultado.replace(".", ",");
@@ -240,7 +255,7 @@ function igualFunction(){
          resultado = resultado - Number(acumulador);
          acumulador = "";
          salvarClick = "";
-         resultado = resultado.toString();
+         resultado = verificarToFixedClass.verificarNumero(resultado);
          exibir.innerHTML = resultado.replace(".", ",");
          igualSecundario.style.visibility = "visible";
          verificarEnter = "sub";     
@@ -249,7 +264,7 @@ function igualFunction(){
    else if(salvarClick === "sub2"){
       resultado = Number(resultado) - Number(acumulador);
       num2 = Number(acumulador);
-      num2 = String(num2);
+      num2 = verificarToFixedClass.verificarNumero(num2);
       exibirSecundario2.innerHTML = num2.replace(".",",");
       resultado = resultado.toString();
       exibir.innerHTML = resultado.replace(".", ",");
@@ -264,7 +279,7 @@ function igualFunction(){
          resultado = resultado * Number(acumulador);
          acumulador = "";
          salvarClick = "";
-         resultado = resultado.toString();
+         resultado = verificarToFixedClass.verificarNumero(resultado);
          exibir.innerHTML = resultado.replace(".", ",");
          igualSecundario.style.visibility = "visible";
          verificarEnter = "mult";       
@@ -273,9 +288,9 @@ function igualFunction(){
    else if(salvarClick === "mult2"){
       resultado = Number(resultado) * Number(acumulador);
       num2 = Number(acumulador);
-      num2 = String(num2);
+      num2 = verificarToFixedClass.verificarNumero(num2);
       exibirSecundario2.innerHTML = num2.replace(".",",");;
-      resultado = resultado.toString();
+      resultado = verificarToFixedClass.verificarNumero(resultado);
       exibir.innerHTML = resultado.replace(".", ",");
       acumulador = "";
       salvarClick = "";
@@ -288,7 +303,7 @@ function igualFunction(){
          resultado = resultado / Number(acumulador);
          acumulador = "";
          salvarClick = "";
-         resultado = resultado.toString();
+         resultado = verificarToFixedClass.verificarNumero(resultado);
          exibir.innerHTML = resultado.replace(".", ",");
          igualSecundario.style.visibility = "visible";
          verificarEnter = "div";          
@@ -297,9 +312,9 @@ function igualFunction(){
    else if(salvarClick === "div2"){
       resultado = Number(resultado) / Number(acumulador);
       num2 = Number(acumulador);
-      num2 = String(num2);
+      num2 = verificarToFixedClass.verificarNumero(num2);
       exibirSecundario2.innerHTML = num2.replace(".",",");
-      resultado = resultado.toString();
+      resultado = verificarToFixedClass.verificarNumero(resultado);
       exibir.innerHTML = resultado.replace(".", ",");
       acumulador = "";
       salvarClick = "";
@@ -312,40 +327,40 @@ function igualFunction(){
             resultado = Number(resultado);   
             num1 = Number(num1);
             num1 = num1 + num2;
-            num1 = num1.toString();
+            num1 = verificarToFixedClass.verificarNumero(num1);
             exibirSecundario1.innerHTML = num1.replace(".",",");
             resultado = resultado + num2;
-            resultado = resultado.toString();
-            exibir.innerHTML = resultado.replace(".", ","); 
+            resultado = verificarToFixedClass.verificarNumero(resultado);
+            exibir.innerHTML = resultado.replace(".", ",");
       }
       else if(verificarEnter === "sub"){  
          resultado = Number(resultado);
          num1 = Number(num1);   
          num1 = num1 - num2;
-         num1 = num1.toString();
+         num1 = verificarToFixedClass.verificarNumero(num1);
          exibirSecundario1.innerHTML = num1.replace(".",",");
          resultado = resultado - num2;
-         resultado = resultado.toString();
+         resultado = verificarToFixedClass.verificarNumero(resultado);
          exibir.innerHTML = resultado.replace(".", ","); 
       }
       else if(verificarEnter === "mult"){
          resultado = Number(resultado);
          num1 = Number(num1);   
          num1 = num1 * num2;
-         num1 = num1.toString();
+         num1 = verificarToFixedClass.verificarNumero(num1);
          exibirSecundario1.innerHTML = num1.replace(".",",");
          resultado = resultado * num2;
-         resultado = resultado.toString();
+         resultado = verificarToFixedClass.verificarNumero(resultado);
          exibir.innerHTML = resultado.replace(".", ","); 
       }
       else if(verificarEnter === "div"){
          resultado = Number(resultado);
          num1 = Number(num1);   
          num1 = num1 / num2;
-         num1 = num1.toString();
+         num1 = verificarToFixedClass.verificarNumero(num1);
          exibirSecundario1.innerHTML = num1.replace(".",",");
          resultado = resultado / num2;
-         resultado = resultado.toString();
+         resultado = verificarToFixedClass.verificarNumero(resultado);
          exibir.innerHTML = resultado.replace(".", ","); 
       }
    }

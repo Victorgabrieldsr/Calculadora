@@ -1,11 +1,15 @@
 //  let resultado /  let num -> resultado   -> num(0) + resultado = resultado  
 //          0               5        5            10    +    5          15
 
+// mexer no CEFunction e na somaFunction !! 
+
+
 let exibir = document.querySelector("#exibir");
 let acumulador = "";
 let resultado = 0;
 let salvarClick = "";
 let verificarVirugla = true;
+let verificarFunction = true;
 let verificarEnter = "";
 let VerificarSinal = "";
 let num1 = 0;
@@ -42,17 +46,19 @@ const igualSecundario = document.querySelector("#igualSecundario");
 class VerificarToFixedClass{
       verificarNumero(numero){
          numero = Number(numero);
-         if(numero.toFixed(2).endsWith("0")){
-            numero = numero.toFixed(1);
-         }else{
-            numero = numero.toFixed(2);
+         if(numero.toFixed(1).endsWith("0") && numero.toFixed(2).endsWith("0")){
+            numero = numero.toFixed(0);
          }
+         else if(numero.toFixed(2).endsWith("0")){
+            numero = numero.toFixed(1);
+            }else{
+               numero = numero.toFixed(2);
+            }
          numero = String(numero);
          return numero;
       }
 }
 let verificarToFixedClass = new VerificarToFixedClass();
-
 
 zero.addEventListener("click", e =>{
       acumulador = acumulador + "0";
@@ -170,6 +176,11 @@ C.addEventListener("click", e =>{
 
 CE.addEventListener("click", CEFunction);
 function CEFunction(){
+   if(num1 && num2 === 0){
+      acumulador = "";
+      exibir.innerHTML = "0";
+      verificarVirugla = true;
+   }else{
    acumulador = "";
    exibir.innerHTML = "0";
    num1 = 0;
@@ -183,6 +194,7 @@ function CEFunction(){
    verificarEnter = "";
    resultado = 0;
    verificarVirugla = true;
+   }
 }
 
 apagar.addEventListener("click", apagarFunction);
@@ -193,12 +205,15 @@ function apagarFunction(){
          verificarVirugla = true;
       }
       acumulador = acumulador.slice(0, -1);
-      num1 = 0;
-      num2 = 0;
-      igualSecundario.style.visibility = "hidden";
-      exibirSecundario1.innerHTML = "";
-      exibirSecundario2.innerHTML = "";
-      sinal.innerHTML = "";
+      if(num1 && num2){
+         num1 = 0;
+         num2 = 0;
+         igualSecundario.style.visibility = "hidden";
+         exibirSecundario1.innerHTML = "";
+         exibirSecundario2.innerHTML = "";
+         sinal.innerHTML = "";
+         
+      }
       if(acumulador){
          exibir.innerHTML = acumulador.replace(".",",");
       }else{
@@ -228,7 +243,7 @@ function igualFunction(){
    }
    if(salvarClick === "soma"){
       if(acumulador){
-      resultado = resultado + Number(acumulador);
+      resultado = Number(resultado) + Number(acumulador);
       acumulador = "";
       salvarClick = "";
       resultado = verificarToFixedClass.verificarNumero(resultado);
@@ -374,9 +389,11 @@ document.addEventListener('keydown', function(event){
       resultado = 0;
       acumulador = acumulador + event.key;
       exibir.innerHTML = acumulador.replace(".",",");
+      verificarFunction = true;
    }else{
       acumulador = acumulador + event.key;
       exibir.innerHTML = acumulador.replace(".",",");
+      verificarFunction = true;
    }
 
   }
@@ -435,19 +452,26 @@ function virgulaFunction(){
 soma.addEventListener("click", somaFunction);
 function somaFunction(){
    if((resultado) && (acumulador)){
-      salvarClick = "soma";
-      verificarVirugla = true;
-      num1 = num1 + Number(acumulador);
-      num1 = num1.toString();
-      exibirSecundario1.innerHTML = num1.replace(".", ",");
-      sinal.innerHTML = "+";
-      VerificarSinal = "+";
+      if(verificarFunction === true){
+         salvarClick = "soma";
+         verificarVirugla = true;
+         num1 = Number(num1) + Number(acumulador);
+         num1 = verificarToFixedClass.verificarNumero(num1);
+         exibirSecundario1.innerHTML = num1.replace(".", ",");
+         resultado = Number(resultado) + Number(acumulador);
+         resultado = verificarToFixedClass.verificarNumero(resultado);
+         exibir.innerHTML = resultado.replace(".",",");
+         sinal.innerHTML = "+";
+         VerificarSinal = "+";
+         acumulador = "";
+         verificarFunction = false;
+      }
    }
    else if((salvarClick !== "soma")){
    if(acumulador){
       salvarClick = "soma";
       num1 = num1 + Number(acumulador);
-      num1 = num1.toString();
+      num1 = String(num1);
       exibirSecundario1.innerHTML = num1.replace(".",",");
       sinal.innerHTML = "+";
       VerificarSinal = "+";
@@ -455,36 +479,43 @@ function somaFunction(){
       acumulador = "";
       verificarVirugla = true;
    }
-   else if((acumulador === "") && (resultado)){
-      salvarClick = "soma2";
-      acumulador = resultado;
-      num1 = num1 + Number(acumulador);
-      num1 = num1.toString();
-      exibirSecundario1.innerHTML = num1.replace(".",",");
-      sinal.innerHTML = "+";
-      VerificarSinal = "+";
-      acumulador = "";
-      verificarVirugla = true;
-      }  
+   // else if((acumulador === "") && (resultado)){
+   //    salvarClick = "soma2";
+   //    acumulador = resultado;
+   //    num1 = num1 + Number(acumulador);
+   //    num1 = String(num1);
+   //    exibirSecundario1.innerHTML = num1.replace(".",",");
+   //    sinal.innerHTML = "+";
+   //    VerificarSinal = "+";
+   //    acumulador = "";
+   //    verificarVirugla = true;
+   //    }  
    }
 }
 
 sub.addEventListener("click", subFunction);
 function subFunction(){
    if((resultado) && (acumulador)){
-      salvarClick = "sub";
-      verificarVirugla = true;
-      num1 = num1 + Number(acumulador);
-      num1 = num1.toString();
-      exibirSecundario1.innerHTML = num1.replace(".",",");
-      sinal.innerHTML = "-";
-      VerificarSinal = "-";
+      if(verificarFunction === true){
+         salvarClick = "sub";
+         verificarVirugla = true;
+         num1 = Number(num1) - Number(acumulador);
+         num1 = verificarToFixedClass.verificarNumero(num1);
+         exibirSecundario1.innerHTML = num1.replace(".", ",");
+         resultado = Number(resultado) - Number(acumulador);
+         resultado = verificarToFixedClass.verificarNumero(resultado);
+         exibir.innerHTML = resultado.replace(".",",");
+         sinal.innerHTML = "-";
+         VerificarSinal = "-";
+         acumulador = "";
+         verificarFunction = false;
+      }
    }
    else if((salvarClick !== "sub")){
    if(acumulador){
          salvarClick = "sub";
          num1 = num1 + Number(acumulador);
-         num1 = num1.toString();
+         num1 = String(num1);
          exibirSecundario1.innerHTML = num1.replace(".",",");
          sinal.innerHTML = "-";
          VerificarSinal = "-";
@@ -492,17 +523,17 @@ function subFunction(){
          acumulador = "";
          verificarVirugla = true;
       }
-   else if((acumulador === "") && (resultado)){
-      salvarClick = "sub2";
-      acumulador = resultado;
-      num1 = num1 + Number(acumulador);
-      num1 = num1.toString();
-      exibirSecundario1.innerHTML = num1.replace(".",",");
-      sinal.innerHTML = "-";
-      VerificarSinal = "-";
-      acumulador = "";
-      verificarVirugla = true;
-      }
+   // else if((acumulador === "") && (resultado)){
+   //    salvarClick = "sub2";
+   //    acumulador = resultado;
+   //    num1 = num1 + Number(acumulador);
+   //    num1 = num1.toString();
+   //    exibirSecundario1.innerHTML = num1.replace(".",",");
+   //    sinal.innerHTML = "-";
+   //    VerificarSinal = "-";
+   //    acumulador = "";
+   //    verificarVirugla = true;
+   //    }
    }
 }
 
@@ -526,16 +557,16 @@ function multFunction(){
       acumulador = "";
       verificarVirugla = true;
    }
-   else if((acumulador === "") && (resultado)){
-      salvarClick = "mult2";
-      acumulador = resultado;
-      num1 = num1 + Number(acumulador);
-      exibirSecundario1.innerHTML = num1;
-      sinal.innerHTML = "×";
-      VerificarSinal = "*";
-      acumulador = "";
-      verificarVirugla = true;
-      }
+   // else if((acumulador === "") && (resultado)){
+   //    salvarClick = "mult2";
+   //    acumulador = resultado;
+   //    num1 = num1 + Number(acumulador);
+   //    exibirSecundario1.innerHTML = num1;
+   //    sinal.innerHTML = "×";
+   //    VerificarSinal = "*";
+   //    acumulador = "";
+   //    verificarVirugla = true;
+   //    }
    }  
 }
 
@@ -559,15 +590,15 @@ function divFunction(){
       acumulador = "";
       verificarVirugla = true;
    }
-   else if((acumulador === "") && (resultado)){
-      salvarClick = "div2";
-      acumulador = resultado;
-      num1 = num1 + Number(acumulador);
-      exibirSecundario1.innerHTML = num1;
-      sinal.innerHTML = "÷";
-      VerificarSinal = "/";
-      acumulador = "";
-      verificarVirugla = true;
-      }
+   // else if((acumulador === "") && (resultado)){
+   //    salvarClick = "div2";
+   //    acumulador = resultado;
+   //    num1 = num1 + Number(acumulador);
+   //    exibirSecundario1.innerHTML = num1;
+   //    sinal.innerHTML = "÷";
+   //    VerificarSinal = "/";
+   //    acumulador = "";
+   //    verificarVirugla = true;
+   //    }
    }
 }

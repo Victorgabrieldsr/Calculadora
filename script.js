@@ -40,12 +40,14 @@ const CE = document.querySelector("#CE");
 const virgula = document.querySelector("#virgula");
 const porcentagem = document.querySelector("#porcentagem");
 const maisEMenos = document.querySelector("#maisEMenos");
+const elevado = document.querySelector("#elevado");
 
 const caixaSecundaria = document.querySelector("#caixaSecundaria");
 let exibirSecundario1 = document.querySelector("#exibirSecundario1");
 let exibirSecundario2 = document.querySelector("#exibirSecundario2");
 let sinal = document.querySelector("#sinal");
 const igualSecundario = document.querySelector("#igualSecundario");
+
 
 class VerificarToFixedClass{  
    // Uma classe que  verificar quantos numeros vai por depois da virgula
@@ -579,7 +581,7 @@ function virgulaFunction(){
                verificarVirugla = false;
             }
          }else if(num1 !== ""){
-            num1 = num1 + "."
+            num1 = num1 + ".";
             exibir.innerHTML = num1.replace(".",",");
             verificarVirugla = false;
          }
@@ -900,6 +902,20 @@ function maisEMenosFunction(){
    }else if(verificarFunction === false){
       if(num2){
       num2 = -num2;
+      exibir.innerHTML = num2;
+      }
+   }
+}
+elevado.addEventListener("click", elevadoFunction);
+function elevadoFunction(){
+   if(verificarFunction === true){
+      if(num1){
+         num1 = num1 * num1;
+         exibir.innerHTML = num1;
+      }
+   }else if(verificarFunction === false){
+      if(num2){
+      num2 = num2 * num2;
       exibir.innerHTML = num2;
       }
    }

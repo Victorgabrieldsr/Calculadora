@@ -17,6 +17,8 @@ let verificarApagarNum1 = true;
 let verificarApagarNum2 = true;
 let num1 = "";
 let num2 = "";
+let num1Raiz = "";
+let num2Raiz = "";
 
 const um = document.querySelector("#um");
 const dois = document.querySelector("#dois");
@@ -76,7 +78,7 @@ let verificarToFixedClass = new VerificarToFixedClass();
                   num1 = String(num1);
                }else{
                   num1 = num1 + "0";
-                  exibir.innerHTML= num1;
+                  exibir.innerHTML = num1.replace(".",",");
                }
             } else if(verificarNum === false){
                num2 = Number(num2);
@@ -85,7 +87,7 @@ let verificarToFixedClass = new VerificarToFixedClass();
                   num2 = String(num2);
                }else{
                   num2 = num2 + "0";
-                  exibir.innerHTML= num2;
+                  exibir.innerHTML = num2.replace(".",",");
                }
             }
       });
@@ -93,18 +95,18 @@ let verificarToFixedClass = new VerificarToFixedClass();
          if(verificarNum === true){
             if((salvarClick === "") && (num1)){
                num1 = num1 + "1";
-               exibir.innerHTML= num1;
+               exibir.innerHTML = num1.replace(".",",");;
             }else{
             num1 = num1 + "1";
-            exibir.innerHTML= num1;
+            exibir.innerHTML = num1.replace(".",",");;
          }
          } else if(verificarNum === false){
             if((salvarClick === "") && (num2)){
                num2 = num2 + "1";
-               exibir.innerHTML= num2;
+               exibir.innerHTML = num2.replace(".",",");
             }else{
             num2 = num2 + "1";
-            exibir.innerHTML= num2;
+            exibir.innerHTML = num2.replace(".",",");
          }
          }
       });
@@ -112,18 +114,18 @@ let verificarToFixedClass = new VerificarToFixedClass();
          if(verificarNum === true){
             if((salvarClick === "") && (num1)){
                num1 = num1 + "2";
-               exibir.innerHTML= num1;
+               exibir.innerHTML = num1.replace(".",",");
             }else{
             num1 = num1 + "2";
-            exibir.innerHTML= num1;
+            exibir.innerHTML = num1.replace(".",",");
          }
          } else if(verificarNum === false){
             if((salvarClick === "") && (num2)){
                num2 = num2 + "2";
-               exibir.innerHTML= num2;
+               exibir.innerHTML = num2.replace(".",",");
             }else{
             num2 = num2 + "2";
-            exibir.innerHTML= num2;
+            exibir.innerHTML = num2.replace(".",",");
          }
          }
       });
@@ -131,18 +133,18 @@ let verificarToFixedClass = new VerificarToFixedClass();
          if(verificarNum === true){
             if((salvarClick === "") && (num1)){
                num1 = num1 + "3";
-               exibir.innerHTML= num1;
+               exibir.innerHTML = num1.replace(".",",");
             }else{
             num1 = num1 + "3";
-            exibir.innerHTML= num1;
+            exibir.innerHTML = num1.replace(".",",");
          }
          } else if(verificarNum === false){
             if((salvarClick === "") && (num2)){
                num2 = num2 + "3";
-               exibir.innerHTML= num2;
+               exibir.innerHTML = num2.replace(".",",");
             }else{
             num2 = num2 + "3";
-            exibir.innerHTML= num2;
+            exibir.innerHTML = num2.replace(".",",");
          }
          }
       });
@@ -150,18 +152,18 @@ let verificarToFixedClass = new VerificarToFixedClass();
          if(verificarNum === true){
             if((salvarClick === "") && (num1)){
                num1 = num1 + "4";
-               exibir.innerHTML= num1;
+               exibir.innerHTML = num1.replace(".",",");
             }else{
             num1 = num1 + "4";
-            exibir.innerHTML= num1;
+            exibir.innerHTML = num1.replace(".",",");
          }
          } else if(verificarNum === false){
             if((salvarClick === "") && (num2)){
                num2 = num2 + "4";
-               exibir.innerHTML= num2;
+               exibir.innerHTML = num2.replace(".",",");
             }else{
             num2 = num2 + "4";
-            exibir.innerHTML= num2;
+            exibir.innerHTML = num2.replace(".",",");
          }
          }
       });
@@ -169,18 +171,18 @@ let verificarToFixedClass = new VerificarToFixedClass();
          if(verificarNum === true){
             if((salvarClick === "") && (num1)){
                num1 = num1 + "5";
-               exibir.innerHTML= num1;
+               exibir.innerHTML = num1.replace(".",",");
             }else{
             num1 = num1 + "5";
-            exibir.innerHTML= num1;
+            exibir.innerHTML = num1.replace(".",",");
          }
          } else if(verificarNum === false){
             if((salvarClick === "") && (num2)){
                num2 = num2 + "5";
-               exibir.innerHTML= num2;
+               exibir.innerHTML = num2.replace(".",",");
             }else{
             num2 = num2 + "5";
-            exibir.innerHTML= num2;
+            exibir.innerHTML = num2.replace(".",",");
          }
          }
       });
@@ -188,18 +190,18 @@ let verificarToFixedClass = new VerificarToFixedClass();
          if(verificarNum === true){
             if((salvarClick === "") && (num1)){
                num1 = num1 + "6";
-               exibir.innerHTML= num1;
+               exibir.innerHTML = num1.replace(".",",");
             }else{
             num1 = num1 + "6";
-            exibir.innerHTML= num1;
+            exibir.innerHTML = num1.replace(".",",");
          }
          } else if(verificarNum === false){
             if((salvarClick === "") && (num2)){
                num2 = num2 + "6";
-               exibir.innerHTML= num2;
+               exibir.innerHTML = num2.replace(".",",");
             }else{
             num2 = num2 + "6";
-            exibir.innerHTML= num2;
+            exibir.innerHTML = num2.replace(".",",");
          }
          }
       });
@@ -207,18 +209,18 @@ let verificarToFixedClass = new VerificarToFixedClass();
          if(verificarNum === true){
             if((salvarClick === "") && (num1)){
                num1 = num1 + "7";
-               exibir.innerHTML= num1;
+               exibir.innerHTML = num1.replace(".",",");
             }else{
             num1 = num1 + "7";
-            exibir.innerHTML= num1;
+            exibir.innerHTML = num1.replace(".",",");
          }
          } else if(verificarNum === false){
             if((salvarClick === "") && (num2)){
                num2 = num2 + "7";
-               exibir.innerHTML= num2;
+               exibir.innerHTML = num2.replace(".",",");
             }else{
             num2 = num2 + "7";
-            exibir.innerHTML= num2;
+            exibir.innerHTML = num2.replace(".",",");
          }
          }
       });
@@ -226,18 +228,18 @@ let verificarToFixedClass = new VerificarToFixedClass();
          if(verificarNum === true){
             if((salvarClick === "") && (num1)){
                num1 = num1 + "8";
-               exibir.innerHTML= num1;
+               exibir.innerHTML = num1.replace(".",",");
             }else{
             num1 = num1 + "8";
-            exibir.innerHTML= num1;
+            exibir.innerHTML = num1.replace(".",",");
          }
          } else if(verificarNum === false){
             if((salvarClick === "") && (num2)){
                num2 = num2 + "8";
-               exibir.innerHTML= num2;
+               exibir.innerHTML= num2.replace(".",",");
             }else{
             num2 = num2 + "8";
-            exibir.innerHTML= num2;
+            exibir.innerHTML= num2.replace(".",",");
          }
          }
       });
@@ -245,18 +247,18 @@ let verificarToFixedClass = new VerificarToFixedClass();
          if(verificarNum === true){
             if((salvarClick === "") && (num1)){
                num1 = num1 + "9";
-               exibir.innerHTML= num1;
+               exibir.innerHTML= num1.replace(".",",");
             }else{
             num1 = num1 + "9";
-            exibir.innerHTML= num1;
+            exibir.innerHTML= num1.replace(".",",");
          }
          } else if(verificarNum === false){
             if((salvarClick === "") && (num2)){
                num2 = num2 + "9";
-               exibir.innerHTML= num2;
+               exibir.innerHTML= num2.replace(".",",");
             }else{
             num2 = num2 + "9";
-            exibir.innerHTML= num2;
+            exibir.innerHTML= num2.replace(".",",");
          }
          }
       });
@@ -513,7 +515,7 @@ document.addEventListener('keydown', function(event){
             num1 = String(num1);
          }else{
             num1 = num1 + "0";
-            exibir.innerHTML= num1;
+            exibir.innerHTML = num1.replace(".",",");
          }
       } else if(verificarNum === false){
          num2 = Number(num2);
@@ -522,7 +524,7 @@ document.addEventListener('keydown', function(event){
             num2 = String(num2);
          }else{
             num2 = num2 + "0";
-            exibir.innerHTML= num2;
+            exibir.innerHTML = num2.replace(".",",");
          }
       }
    }
@@ -622,7 +624,11 @@ function somaFunction(){
          verificarVirugla = true;      
          num1 = Number(resultado);
          num1 = verificarToFixedClass.verificarNumero(num1);
-         exibirSecundario1.innerHTML = num1.replace(".", ",");
+         if(verificarRaiz === true){
+            exibirSecundario1.innerHTML = "(√"+num1+")".replace(".",",");
+         }else if(verificarRaiz === false){
+            exibirSecundario1.innerHTML = num1.replace(".", ",");
+         }
          exibir.innerHTML = num1.replace(".",","); 
          num2 = "";
          exibirSecundario2.innerHTML = "";
@@ -640,7 +646,11 @@ function somaFunction(){
          salvarClick = "soma";
          verificarVirugla = true;
          num1 = verificarToFixedClass.verificarNumero(num1);
-         exibirSecundario1.innerHTML = num1.replace(".", ",");
+         if(verificarRaiz === true){
+            exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+         }else if(verificarRaiz === false){
+            exibirSecundario1.innerHTML = num1.replace(".", ",");
+         }
          exibir.innerHTML = num1.replace(".",",");
          exibirSecundario2.innerHTML = "";
          igualSecundario.style.visibility = "hidden";
@@ -661,7 +671,11 @@ function somaFunction(){
          verificarVirugla = true;
          num1 = Number(num1) + Number(num2);
          num1 = verificarToFixedClass.verificarNumero(num1);
-         exibirSecundario1.innerHTML = num1.replace(".", ",");
+         if(verificarRaiz === true){
+            exibirSecundario1.innerHTML = "(√"+num1.replace(".",",")+")";
+         }else if(verificarRaiz === false){
+            exibirSecundario1.innerHTML = num1.replace(".", ",");
+         }
          exibir.innerHTML = num1.replace(".",",");
          num2 = "";
          exibirSecundario2.innerHTML = "";
@@ -902,12 +916,12 @@ function maisEMenosFunction(){
    if(verificarFunction === true){
       if(num1){
          num1 = -num1;
-         exibir.innerHTML = num1;
+         exibir.innerHTML = num1.replace(".",",");
       }
    }else if(verificarFunction === false){
       if(num2){
       num2 = -num2;
-      exibir.innerHTML = num2;
+      exibir.innerHTML = num2.replace(".",",");
       }
    }
 }
@@ -916,17 +930,18 @@ function elevadoFunction(){
    if(verificarFunction === true){
       if(num1){
          num1 = num1 * num1;
-         exibir.innerHTML = num1;
+         exibir.innerHTML = num1.replace(".",",");
       }
    }else if(verificarFunction === false){
       if(num2){
       num2 = num2 * num2;
-      exibir.innerHTML = num2;
+      exibir.innerHTML = num2.replace(".",",");
       }
    }
 }
 
 
+let verificarRaiz = false;
 raiz.addEventListener("click", raizFunction);
 function raizFunction() {
    if(verificarNum === true){
@@ -935,14 +950,17 @@ function raizFunction() {
       let estimativaInicial = numero / 2;
       let iteracoes = 0;
       let estimativaAtual = estimativaInicial;
+      num1Raiz = num1;
+      exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
      while (true) {
        let novaEstimativa = 0.5 * (estimativaAtual + numero / estimativaAtual);
          
        if (Math.abs(novaEstimativa - estimativaAtual) < precisao || iteracoes >= 1000) {
          num1 = novaEstimativa; // Atribui a estimativa atual a 'numeroReal' quando a precisão é alcançada ou após um número máximo de iterações    
          console.log("numero real " + num1);
-         verificarToFixedClass.verificarNumero(num1);
-         exibir.innerHTML = num1;
+         num1 = verificarToFixedClass.verificarNumero(num1);
+         exibir.innerHTML = num1.replace(".",",");
+         verificarRaiz = true;
          break; // Sai do loop quando a precisão é alcançada ou após um número máximo de iterações
        }
          
@@ -951,25 +969,27 @@ function raizFunction() {
        console.log("estimativa " + estimativaAtual);
      }
    }else if(verificarNum === false){
-      let precisao = 1e-6;
-      let numero = Number(num2);
-      let estimativaInicial = numero / 2;
-      let iteracoes = 0;
-      let estimativaAtual = estimativaInicial;
+      let precisao2 = 1e-6;
+      let numero2 = Number(num2);
+      let estimativaInicial2 = numero2 / 2;
+      let iteracoes2 = 0;
+      let estimativaAtual2 = estimativaInicial2;
+      num2Raiz = num2;
+      exibirSecundario2.innerHTML = "(√"+num2Raiz.replace(".",",")+")";
      while (true) {
-       let novaEstimativa = 0.5 * (estimativaAtual + numero / estimativaAtual);
+       let novaEstimativa2 = 0.5 * (estimativaAtual2 + numero2 / estimativaAtual2);
          
-       if (Math.abs(novaEstimativa - estimativaAtual) < precisao || iteracoes >= 1000) {
-         num2 = novaEstimativa; // Atribui a estimativa atual a 'numeroReal' quando a precisão é alcançada ou após um número máximo de iterações    
+       if (Math.abs(novaEstimativa2 - estimativaAtual2) < precisao2 || iteracoes2 >= 1000) {
+         num2 = novaEstimativa2; // Atribui a estimativa atual a 'numeroReal' quando a precisão é alcançada ou após um número máximo de iterações    
          console.log("numero real " + num2);
-         verificarToFixedClass.verificarNumero(num2);
-         exibir.innerHTML = num2;
+         num2 = verificarToFixedClass.verificarNumero(num2);
+         exibir.innerHTML = num2.replace(".",",");
          break; // Sai do loop quando a precisão é alcançada ou após um número máximo de iterações
        }
          
-       estimativaAtual = novaEstimativa;
-       iteracoes++;
-       console.log("estimativa " + estimativaAtual);
+       estimativaAtual2 = novaEstimativa2;
+       iteracoes2++;
+       console.log("estimativa " + estimativaAtual2);
      }
    }
 

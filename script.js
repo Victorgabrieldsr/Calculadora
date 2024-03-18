@@ -41,6 +41,7 @@ const virgula = document.querySelector("#virgula");
 const porcentagem = document.querySelector("#porcentagem");
 const maisEMenos = document.querySelector("#maisEMenos");
 const elevado = document.querySelector("#elevado");
+const raiz = document.querySelector("#raiz");
 
 const caixaSecundaria = document.querySelector("#caixaSecundaria");
 let exibirSecundario1 = document.querySelector("#exibirSecundario1");
@@ -279,37 +280,41 @@ C.addEventListener("click", e =>{
    
 CE.addEventListener("click", CEFunction);
 function CEFunction(){
-   if(num1 && num2 && resultado){
-      exibir.innerHTML = "0"; 
-      num1 = "";
-      num2 = "";
-      igualSecundario.style.visibility = "hidden";
-      exibirSecundario1.innerHTML = "";
-      exibirSecundario2.innerHTML = "";
-      sinal.innerHTML = "";
-      salvarClick = "";
-      verificarEnter = "";
-      resultado = 0;
-      verificarVirugla = true;
-      verificarNum = true;
-      console.log("teste1");
-   }else if(num1 && num2){
-      num2 = "";
-      exibir.innerHTML = "0";
-      verificarVirugla = true;
-      console.log("teste2");
-      console.log(num2);
-   }else if(num1 && (num2 === "" || num2 === 0)){
-      num2 = "";
-      exibir.innerHTML = "0";
-      verificarVirugla = true;
-      console.log("teste3");
-   }else if(num1){
-      num2 = "";
-      num1 = "";
-      exibir.innerHTML = "0";
-      verificarVirugla = true;
-      console.log("teste4");
+   if(verificarNum === true){
+      if(num1){
+         num1 = "";
+         exibir.innerHTML = "0";
+         verificarVirugla = true;
+         console.log("teste1");
+         console.log(num1);
+      }
+   }else if(verificarNum === false){
+      if(num1 && num2 && resultado){
+         exibir.innerHTML = "0"; 
+         num1 = "";
+         num2 = "";
+         igualSecundario.style.visibility = "hidden";
+         exibirSecundario1.innerHTML = "";
+         exibirSecundario2.innerHTML = "";
+         sinal.innerHTML = "";
+         salvarClick = "";
+         verificarEnter = "";
+         resultado = 0;
+         verificarVirugla = true;
+         verificarNum = true;
+         console.log("teste1");
+      }else if(num1 && num2){
+         num2 = "";
+         exibir.innerHTML = "0";
+         verificarVirugla = true;
+         console.log("teste2");
+         console.log(num2);
+      }else if(num1 && (num2 === "" || num2 === 0)){
+         num2 = "";
+         exibir.innerHTML = "0";
+         verificarVirugla = true;
+         console.log("teste3");
+      }
    }
 }
 
@@ -920,3 +925,59 @@ function elevadoFunction(){
       }
    }
 }
+
+
+raiz.addEventListener("click", raizFunction);
+function raizFunction() {
+   if(verificarNum === true){
+      let precisao = 1e-6;
+      let numero = Number(num1);
+      let estimativaInicial = numero / 2;
+      let iteracoes = 0;
+      let estimativaAtual = estimativaInicial;
+     while (true) {
+       let novaEstimativa = 0.5 * (estimativaAtual + numero / estimativaAtual);
+         
+       if (Math.abs(novaEstimativa - estimativaAtual) < precisao || iteracoes >= 1000) {
+         num1 = novaEstimativa; // Atribui a estimativa atual a 'numeroReal' quando a precisão é alcançada ou após um número máximo de iterações    
+         console.log("numero real " + num1);
+         verificarToFixedClass.verificarNumero(num1);
+         exibir.innerHTML = num1;
+         break; // Sai do loop quando a precisão é alcançada ou após um número máximo de iterações
+       }
+         
+       estimativaAtual = novaEstimativa;
+       iteracoes++;
+       console.log("estimativa " + estimativaAtual);
+     }
+   }else if(verificarNum === false){
+      let precisao = 1e-6;
+      let numero = Number(num2);
+      let estimativaInicial = numero / 2;
+      let iteracoes = 0;
+      let estimativaAtual = estimativaInicial;
+     while (true) {
+       let novaEstimativa = 0.5 * (estimativaAtual + numero / estimativaAtual);
+         
+       if (Math.abs(novaEstimativa - estimativaAtual) < precisao || iteracoes >= 1000) {
+         num2 = novaEstimativa; // Atribui a estimativa atual a 'numeroReal' quando a precisão é alcançada ou após um número máximo de iterações    
+         console.log("numero real " + num2);
+         verificarToFixedClass.verificarNumero(num2);
+         exibir.innerHTML = num2;
+         break; // Sai do loop quando a precisão é alcançada ou após um número máximo de iterações
+       }
+         
+       estimativaAtual = novaEstimativa;
+       iteracoes++;
+       console.log("estimativa " + estimativaAtual);
+     }
+   }
+
+}
+
+
+// Exemplo de uso:
+// let numero = 25;
+// let raiz = calcularRaizQuadrada(numero);
+// console.log("A raiz quadrada de", numero, "é:", raiz);
+

@@ -19,6 +19,10 @@ let num1 = "";
 let num2 = "";
 let num1Raiz = "";
 let num2Raiz = "";
+let numFracao1;
+let numFracao2;
+let verificarRaiz = false;
+let verificarNumFracao = false;
 
 const um = document.querySelector("#um");
 const dois = document.querySelector("#dois");
@@ -44,6 +48,7 @@ const porcentagem = document.querySelector("#porcentagem");
 const maisEMenos = document.querySelector("#maisEMenos");
 const elevado = document.querySelector("#elevado");
 const raiz = document.querySelector("#raiz");
+const fracao = document.querySelector("#fracao");
 
 const caixaSecundaria = document.querySelector("#caixaSecundaria");
 let exibirSecundario1 = document.querySelector("#exibirSecundario1");
@@ -375,12 +380,21 @@ function igualFunction(){
    if(salvarClick === "soma"){
       if(num2){
          num2 = verificarToFixedClass.verificarNumero(num2);
-         exibirSecundario2.innerHTML = num2.replace(".",",");
-
+         if(verificarRaiz === true){
+            exibirSecundario2.innerHTML = "(√"+num2Raiz.replace(".",",")+")";
+            verificarRaiz = false;
+         }else if(verificarRaiz === false){
+            exibirSecundario2.innerHTML = num2.replace(".", ",");
+         }
+         if(verificarNumFracao === true){
+            exibirSecundario2.innerHTML = `1/(${numFracao2})`;
+         }else if(verificarNumFracao === false){
+            exibirSecundario2.innerHTML = num2;
+         }
          resultado = Number(num1) + Number(num2);
          resultado = verificarToFixedClass.verificarNumero(resultado);
          exibir.innerHTML = resultado.replace(".", ",");
- 
+         
          igualSecundario.style.visibility = "visible";
          verificarEnter = "soma";
          salvarClick = "";
@@ -449,7 +463,9 @@ function igualFunction(){
                num1 = Number(num1) + Number(num2);
                num1 = verificarToFixedClass.verificarNumero(num1);
                exibirSecundario1.innerHTML = num1.replace(".",",");
-
+                if(verificarRaiz === false){
+                  exibirSecundario2.innerHTML = num2.replace(".", ",");
+               }
                resultado = Number(resultado) + Number(num2);
                resultado = verificarToFixedClass.verificarNumero(resultado);
                exibir.innerHTML = resultado.replace(".", ",");
@@ -504,9 +520,8 @@ function igualFunction(){
    } 
 }
 
-document.addEventListener('keydown', function(event){
-   
-      console.log(event.key);
+document.addEventListener('keydown', function(event){ 
+   console.log(event.key);
    if(event.key == '0'){
       if(verificarNum === true){
          num1 = Number(num1);
@@ -625,7 +640,8 @@ function somaFunction(){
          num1 = Number(resultado);
          num1 = verificarToFixedClass.verificarNumero(num1);
          if(verificarRaiz === true){
-            exibirSecundario1.innerHTML = "(√"+num1+")".replace(".",",");
+            exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+            verificarRaiz = false;
          }else if(verificarRaiz === false){
             exibirSecundario1.innerHTML = num1.replace(".", ",");
          }
@@ -648,9 +664,18 @@ function somaFunction(){
          num1 = verificarToFixedClass.verificarNumero(num1);
          if(verificarRaiz === true){
             exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+            verificarNumFracao = false;
          }else if(verificarRaiz === false){
             exibirSecundario1.innerHTML = num1.replace(".", ",");
          }
+
+         if(verificarNumFracao === true){
+            exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else if(verificarNumFracao === false){
+            exibirSecundario1.innerHTML = num1.replace(".",",");
+         }
+
          exibir.innerHTML = num1.replace(".",",");
          exibirSecundario2.innerHTML = "";
          igualSecundario.style.visibility = "hidden";
@@ -675,6 +700,11 @@ function somaFunction(){
             exibirSecundario1.innerHTML = "(√"+num1.replace(".",",")+")";
          }else if(verificarRaiz === false){
             exibirSecundario1.innerHTML = num1.replace(".", ",");
+         }
+         if(verificarNumFracao === true){
+            exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+         }else if(verificarNumFracao === false){
+            exibirSecundario1.innerHTML = num1.replace(".",",");
          }
          exibir.innerHTML = num1.replace(".",",");
          num2 = "";
@@ -940,8 +970,6 @@ function elevadoFunction(){
    }
 }
 
-
-let verificarRaiz = false;
 raiz.addEventListener("click", raizFunction);
 function raizFunction() {
    if(verificarNum === true){
@@ -992,7 +1020,25 @@ function raizFunction() {
        console.log("estimativa " + estimativaAtual2);
      }
    }
+}
 
+fracao.addEventListener("click", fracaoFunction);
+function fracaoFunction(){
+   if(verificarNum === true){
+      numFracao1 = num1;
+      num1 = 1 / num1;
+      exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+      num1 = verificarToFixedClass.verificarNumero(num1);
+      exibir.innerHTML = num1.replace(".",",");
+      verificarNumFracao = true;
+   }else if(verificarNum === false){
+      numFracao2 = num2;
+      num2 = 1 / num2;
+      exibirSecundario2.innerHTML = `1/(${numFracao2.replace(".",",")})`;
+      num2 = verificarToFixedClass.verificarNumero(num2);
+      exibir.innerHTML = num2.replace(".",",");
+      verificarNumFracao = true;
+   }
 }
 
 
@@ -1000,4 +1046,3 @@ function raizFunction() {
 // let numero = 25;
 // let raiz = calcularRaizQuadrada(numero);
 // console.log("A raiz quadrada de", numero, "é:", raiz);
-

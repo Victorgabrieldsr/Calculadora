@@ -21,8 +21,11 @@ let num1Raiz = "";
 let num2Raiz = "";
 let numFracao1;
 let numFracao2;
+let numElevado1;
+let numElevado2;
 let verificarRaiz = false;
 let verificarNumFracao = false;
+let verificarElevado = false;
 
 const um = document.querySelector("#um");
 const dois = document.querySelector("#dois");
@@ -283,6 +286,9 @@ C.addEventListener("click", e =>{
    exibirSecundario2.innerHTML = "";
    sinal.innerHTML = "";
    verificarNum = true;
+   verificarElevado = false;
+   verificarRaiz = false;
+   verificarNumFracao = false;
 });
    
 CE.addEventListener("click", CEFunction);
@@ -309,6 +315,9 @@ function CEFunction(){
          resultado = 0;
          verificarVirugla = true;
          verificarNum = true;
+         verificarElevado = false;
+         verificarRaiz = false;
+         verificarNumFracao = false;
          console.log("teste1");
       }else if(num1 && num2){
          num2 = "";
@@ -386,9 +395,13 @@ function igualFunction(){
          }else if(verificarNumFracao === true){
             exibirSecundario2.innerHTML = `1/(${numFracao2.replace(".",",")})`;
             verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario2.innerHTML = `sqr(${numElevado2})`;
+            verificarElevado = false;
          }else{
             exibirSecundario2.innerHTML = num2.replace(".",",");
          }
+         
          resultado = Number(num1) + Number(num2);
          resultado = verificarToFixedClass.verificarNumero(resultado);
          exibir.innerHTML = resultado.replace(".", ",");
@@ -400,6 +413,9 @@ function igualFunction(){
          verificarFunction = true;
          verificarApagarNum2 = false;
          console.log("igual soma1");
+         console.log(num1);
+         console.log(num2);
+         console.log(resultado);
       }
    }
    else if(salvarClick === "sub"){  
@@ -411,6 +427,9 @@ function igualFunction(){
             }else if(verificarNumFracao === true){
                exibirSecundario2.innerHTML = `1/(${numFracao2.replace(".",",")})`;
                verificarNumFracao = false;
+            }else if(verificarElevado === true){
+               exibirSecundario2.innerHTML = `sqr(${numElevado2})`;
+               verificarElevado = false;
             }else{
                exibirSecundario2.innerHTML = num2.replace(".",",");
             }
@@ -436,6 +455,9 @@ function igualFunction(){
          }else if(verificarNumFracao === true){
             exibirSecundario2.innerHTML = `1/(${numFracao2.replace(".",",")})`;
             verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario2.innerHTML = `sqr(${numElevado2})`;
+            verificarElevado = false;
          }else{
             exibirSecundario2.innerHTML = num2.replace(".",",");
          }
@@ -461,6 +483,9 @@ function igualFunction(){
          }else if(verificarNumFracao === true){
             exibirSecundario2.innerHTML = `1/(${numFracao2.replace(".",",")})`;
             verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario2.innerHTML = `sqr(${numElevado2})`;
+            verificarElevado = false;
          }else{
             exibirSecundario2.innerHTML = num2.replace(".",",");
          }
@@ -658,8 +683,13 @@ function somaFunction(){
          num1 = verificarToFixedClass.verificarNumero(num1);
          if(verificarRaiz === true){
             exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+            verificarRaiz = false;
          }else if(verificarNumFracao === true){
             exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+            verificarElevado = false;
          }else{
             exibirSecundario1.innerHTML = num1.replace(".",",");
          }
@@ -682,8 +712,13 @@ function somaFunction(){
          num1 = verificarToFixedClass.verificarNumero(num1);
          if(verificarRaiz === true){
             exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+            verificarRaiz = false;
          }else if(verificarNumFracao === true){
             exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+            verificarElevado = false;
          }else{
             exibirSecundario1.innerHTML = num1.replace(".",",");
          }
@@ -710,8 +745,13 @@ function somaFunction(){
          num1 = verificarToFixedClass.verificarNumero(num1);
          if(verificarRaiz === true){
             exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+            verificarRaiz = false;
          }else if(verificarNumFracao === true){
             exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+            verificarElevado = false;
          }else{
             exibirSecundario1.innerHTML = num1.replace(".",",");
          }
@@ -746,6 +786,9 @@ function subFunction(){
             }else if(verificarNumFracao === true){
                exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
                verificarNumFracao = false;
+            }else if(verificarElevado === true){
+               exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+               verificarElevado = false;
             }else{
                exibirSecundario1.innerHTML = num1.replace(".",",");
             }
@@ -772,6 +815,9 @@ function subFunction(){
             }else if(verificarNumFracao === true){
                exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
                verificarNumFracao = false;
+            }else if(verificarElevado === true){
+               exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+               verificarElevado = false;
             }else{
                exibirSecundario1.innerHTML = num1.replace(".",",");
             }
@@ -801,6 +847,9 @@ function subFunction(){
          }else if(verificarNumFracao === true){
             exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
             verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+            verificarElevado = false;
          }else{
             exibirSecundario1.innerHTML = num1.replace(".",",");
          }
@@ -829,12 +878,15 @@ function multFunction(){
          verificarVirugla = true;       
          num1 = Number(resultado);
          num1 = verificarToFixedClass.verificarNumero(num1);
-          if(verificarRaiz === true){
+         if(verificarRaiz === true){
             exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
             verificarRaiz = false;
          }else if(verificarNumFracao === true){
             exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
             verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+            verificarElevado = false;
          }else{
             exibirSecundario1.innerHTML = num1.replace(".",",");
          }
@@ -854,12 +906,15 @@ function multFunction(){
          salvarClick = "mult";
          verificarVirugla = true;   
          num1 = verificarToFixedClass.verificarNumero(num1);
-          if(verificarRaiz === true){
+         if(verificarRaiz === true){
             exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
             verificarRaiz = false;
          }else if(verificarNumFracao === true){
             exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
             verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+            verificarElevado = false;
          }else{
             exibirSecundario1.innerHTML = num1.replace(".",",");
          }
@@ -882,12 +937,15 @@ function multFunction(){
          verificarVirugla = true;
          num1 = Number(num1) * Number(num2);
          num1 = verificarToFixedClass.verificarNumero(num1);
-          if(verificarRaiz === true){
+         if(verificarRaiz === true){
             exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
             verificarRaiz = false;
          }else if(verificarNumFracao === true){
             exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
             verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+            verificarElevado = false;
          }else{
             exibirSecundario1.innerHTML = num1.replace(".",",");
          }
@@ -915,12 +973,15 @@ function divFunction(){
             verificarVirugla = true;    
             num1 = Number(resultado);
             num1 = verificarToFixedClass.verificarNumero(num1);
-             if(verificarRaiz === true){
+            if(verificarRaiz === true){
                exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
                verificarRaiz = false;
             }else if(verificarNumFracao === true){
                exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
                verificarNumFracao = false;
+            }else if(verificarElevado === true){
+               exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+               verificarElevado = false;
             }else{
                exibirSecundario1.innerHTML = num1.replace(".",",");
             }
@@ -940,12 +1001,15 @@ function divFunction(){
             salvarClick = "div";
             verificarVirugla = true;
             num1 = verificarToFixedClass.verificarNumero(num1);
-             if(verificarRaiz === true){
+            if(verificarRaiz === true){
                exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
                verificarRaiz = false;
             }else if(verificarNumFracao === true){
                exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
                verificarNumFracao = false;
+            }else if(verificarElevado === true){
+               exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+               verificarElevado = false;
             }else{
                exibirSecundario1.innerHTML = num1.replace(".",",");
             }
@@ -968,12 +1032,15 @@ function divFunction(){
          verificarVirugla = true;
          num1 = Number(num1) / Number(num2);
          num1 = verificarToFixedClass.verificarNumero(num1);
-          if(verificarRaiz === true){
+         if(verificarRaiz === true){
             exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
             verificarRaiz = false;
          }else if(verificarNumFracao === true){
             exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
             verificarNumFracao = false;
+         }else if(verificarElevado === true){
+            exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
+            verificarElevado = false;
          }else{
             exibirSecundario1.innerHTML = num1.replace(".",",");
          }
@@ -1019,31 +1086,52 @@ function porcentagemFunction(){
 
 maisEMenos.addEventListener("click", maisEMenosFunction);
 function maisEMenosFunction(){
-   if(verificarFunction === true){
-      if(num1){
-         num1 = -num1;
-         exibir.innerHTML = num1.replace(".",",");
-      }
-   }else if(verificarFunction === false){
-      if(num2){
+   if(num1 && num2 && resultado){
+      num1 = resultado;
+      num1 = -num1;
+      exibir.innerHTML = num1;
+      exibirSecundario1.innerHTML = num1;
+      salvarClick = "";
+      num2 = "";
+      igualSecundario.style.visibility = "hidden";
+      exibirSecundario2.innerHTML = "";
+      sinal.innerHTML = "";
+      verificarNum = true;
+      verificarElevado = false;
+      verificarRaiz = false;
+      verificarNumFracao = false;
+   }else if(num2){
       num2 = -num2;
+      num2 = String(num2);
       exibir.innerHTML = num2.replace(".",",");
-      }
+      exibirSecundario2.innerHTML = num2;
+   }else if(num1){
+      num1 = -num1;
+      num1 = String(num1);
+      exibir.innerHTML = num1.replace(".",",");
+      exibirSecundario1.innerHTML = num1;
    }
 }
+
 elevado.addEventListener("click", elevadoFunction);
 function elevadoFunction(){
    if(verificarFunction === true){
       if(num1){
+         numElevado1 = num1;
          num1 = num1 * num1;
          num1 = verificarToFixedClass.verificarNumero(num1);
+         exibirSecundario1.innerHTML = `sqr(${numElevado1})`;
          exibir.innerHTML = num1.replace(".",",");
+         verificarElevado = true;
       }
    }else if(verificarFunction === false){
       if(num2){
+      numElevado2 = num2;
       num2 = num2 * num2;
       num2 = verificarToFixedClass.verificarNumero(num2);
+      exibirSecundario2.innerHTML = `sqr(${numElevado2})`;
       exibir.innerHTML = num2.replace(".",",");
+      verificarElevado = true;
       }
    }
 }

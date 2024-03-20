@@ -383,13 +383,11 @@ function igualFunction(){
          if(verificarRaiz === true){
             exibirSecundario2.innerHTML = "(√"+num2Raiz.replace(".",",")+")";
             verificarRaiz = false;
-         }else if(verificarRaiz === false){
-            exibirSecundario2.innerHTML = num2.replace(".", ",");
-         }
-         if(verificarNumFracao === true){
-            exibirSecundario2.innerHTML = `1/(${numFracao2})`;
-         }else if(verificarNumFracao === false){
-            exibirSecundario2.innerHTML = num2;
+         }else if(verificarNumFracao === true){
+            exibirSecundario2.innerHTML = `1/(${numFracao2.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else{
+            exibirSecundario2.innerHTML = num2.replace(".",",");
          }
          resultado = Number(num1) + Number(num2);
          resultado = verificarToFixedClass.verificarNumero(resultado);
@@ -407,8 +405,15 @@ function igualFunction(){
    else if(salvarClick === "sub"){  
          if(num2){
             num2 = verificarToFixedClass.verificarNumero(num2);
-            exibirSecundario2.innerHTML = num2.replace(".",",");
-   
+            if(verificarRaiz === true){
+               exibirSecundario2.innerHTML = "(√"+num2Raiz.replace(".",",")+")";
+               verificarRaiz = false;
+            }else if(verificarNumFracao === true){
+               exibirSecundario2.innerHTML = `1/(${numFracao2.replace(".",",")})`;
+               verificarNumFracao = false;
+            }else{
+               exibirSecundario2.innerHTML = num2.replace(".",",");
+            }
             resultado = Number(num1) - Number(num2);
             resultado = verificarToFixedClass.verificarNumero(resultado);
             exibir.innerHTML = resultado.replace(".", ",");
@@ -425,8 +430,15 @@ function igualFunction(){
    else if(salvarClick === "mult"){ 
       if(num2){
          num2 = verificarToFixedClass.verificarNumero(num2);
-         exibirSecundario2.innerHTML = num2.replace(".",",");
-
+         if(verificarRaiz === true){
+            exibirSecundario2.innerHTML = "(√"+num2Raiz.replace(".",",")+")";
+            verificarRaiz = false;
+         }else if(verificarNumFracao === true){
+            exibirSecundario2.innerHTML = `1/(${numFracao2.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else{
+            exibirSecundario2.innerHTML = num2.replace(".",",");
+         }
          resultado = Number(num1) * Number(num2);
          resultado = verificarToFixedClass.verificarNumero(resultado);
          exibir.innerHTML = resultado.replace(".", ",");
@@ -443,8 +455,15 @@ function igualFunction(){
    else if(salvarClick === "div"){ 
       if(num2){
          num2 = verificarToFixedClass.verificarNumero(num2);
-         exibirSecundario2.innerHTML = num2.replace(".",",");
-
+         if(verificarRaiz === true){
+            exibirSecundario2.innerHTML = "(√"+num2Raiz.replace(".",",")+")";
+            verificarRaiz = false;
+         }else if(verificarNumFracao === true){
+            exibirSecundario2.innerHTML = `1/(${numFracao2.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else{
+            exibirSecundario2.innerHTML = num2.replace(".",",");
+         }
          resultado = Number(num1) / Number(num2);
          resultado = verificarToFixedClass.verificarNumero(resultado);
          exibir.innerHTML = resultado.replace(".", ",");
@@ -463,9 +482,7 @@ function igualFunction(){
                num1 = Number(num1) + Number(num2);
                num1 = verificarToFixedClass.verificarNumero(num1);
                exibirSecundario1.innerHTML = num1.replace(".",",");
-                if(verificarRaiz === false){
-                  exibirSecundario2.innerHTML = num2.replace(".", ",");
-               }
+               exibirSecundario2.innerHTML = num2.replace(".", ",");
                resultado = Number(resultado) + Number(num2);
                resultado = verificarToFixedClass.verificarNumero(resultado);
                exibir.innerHTML = resultado.replace(".", ",");
@@ -479,7 +496,7 @@ function igualFunction(){
                num1 = Number(num1) - Number(num2);
                num1 = verificarToFixedClass.verificarNumero(num1);
                exibirSecundario1.innerHTML = num1.replace(".",",");
-
+               exibirSecundario2.innerHTML = num2.replace(".", ",");
                resultado = Number(resultado) - Number(num2);
                resultado = verificarToFixedClass.verificarNumero(resultado);
                exibir.innerHTML = resultado.replace(".", ",");
@@ -493,7 +510,7 @@ function igualFunction(){
                num1 = Number(num1) * Number(num2);
                num1 = verificarToFixedClass.verificarNumero(num1);
                exibirSecundario1.innerHTML = num1.replace(".",",");
-
+               exibirSecundario2.innerHTML = num2.replace(".", ",");
                resultado = Number(resultado) * Number(num2);
                resultado = verificarToFixedClass.verificarNumero(resultado);
                exibir.innerHTML = resultado.replace(".", ",");
@@ -507,7 +524,7 @@ function igualFunction(){
             num1 = Number(num1) / Number(num2);
             num1 = verificarToFixedClass.verificarNumero(num1);
             exibirSecundario1.innerHTML = num1.replace(".",",");
-
+            exibirSecundario2.innerHTML = num2.replace(".", ",");
             resultado = Number(resultado) / Number(num2);
             resultado = verificarToFixedClass.verificarNumero(resultado);
             exibir.innerHTML = resultado.replace(".", ",");
@@ -641,9 +658,10 @@ function somaFunction(){
          num1 = verificarToFixedClass.verificarNumero(num1);
          if(verificarRaiz === true){
             exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
-            verificarRaiz = false;
-         }else if(verificarRaiz === false){
-            exibirSecundario1.innerHTML = num1.replace(".", ",");
+         }else if(verificarNumFracao === true){
+            exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+         }else{
+            exibirSecundario1.innerHTML = num1.replace(".",",");
          }
          exibir.innerHTML = num1.replace(".",","); 
          num2 = "";
@@ -664,15 +682,9 @@ function somaFunction(){
          num1 = verificarToFixedClass.verificarNumero(num1);
          if(verificarRaiz === true){
             exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
-            verificarNumFracao = false;
-         }else if(verificarRaiz === false){
-            exibirSecundario1.innerHTML = num1.replace(".", ",");
-         }
-
-         if(verificarNumFracao === true){
+         }else if(verificarNumFracao === true){
             exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
-            verificarNumFracao = false;
-         }else if(verificarNumFracao === false){
+         }else{
             exibirSecundario1.innerHTML = num1.replace(".",",");
          }
 
@@ -697,13 +709,10 @@ function somaFunction(){
          num1 = Number(num1) + Number(num2);
          num1 = verificarToFixedClass.verificarNumero(num1);
          if(verificarRaiz === true){
-            exibirSecundario1.innerHTML = "(√"+num1.replace(".",",")+")";
-         }else if(verificarRaiz === false){
-            exibirSecundario1.innerHTML = num1.replace(".", ",");
-         }
-         if(verificarNumFracao === true){
+            exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+         }else if(verificarNumFracao === true){
             exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
-         }else if(verificarNumFracao === false){
+         }else{
             exibirSecundario1.innerHTML = num1.replace(".",",");
          }
          exibir.innerHTML = num1.replace(".",",");
@@ -731,7 +740,15 @@ function subFunction(){
             verificarVirugla = true;    
             num1 = Number(resultado);
             num1 = verificarToFixedClass.verificarNumero(num1);
-            exibirSecundario1.innerHTML = num1.replace(".", ",");
+            if(verificarRaiz === true){
+               exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+               verificarRaiz = false;
+            }else if(verificarNumFracao === true){
+               exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+               verificarNumFracao = false;
+            }else{
+               exibirSecundario1.innerHTML = num1.replace(".",",");
+            }
             exibir.innerHTML = num1.replace(".",",");
             exibirSecundario2.innerHTML = "";
             igualSecundario.style.visibility = "hidden";
@@ -749,7 +766,15 @@ function subFunction(){
             salvarClick = "sub";
             verificarVirugla = true;
             num1 = verificarToFixedClass.verificarNumero(num1);
-            exibirSecundario1.innerHTML = num1.replace(".", ",");
+            if(verificarRaiz === true){
+               exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+               verificarRaiz = false;
+            }else if(verificarNumFracao === true){
+               exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+               verificarNumFracao = false;
+            }else{
+               exibirSecundario1.innerHTML = num1.replace(".",",");
+            }
             exibir.innerHTML = num1.replace(".",",");
             num2 = "";
             exibirSecundario2.innerHTML = "";
@@ -770,7 +795,15 @@ function subFunction(){
          verificarVirugla = true;  
          num1 = Number(num1) - Number(num2);
          num1 = verificarToFixedClass.verificarNumero(num1);
-         exibirSecundario1.innerHTML = num1.replace(".", ",");
+         if(verificarRaiz === true){
+            exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+            verificarRaiz = false;
+         }else if(verificarNumFracao === true){
+            exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else{
+            exibirSecundario1.innerHTML = num1.replace(".",",");
+         }
          exibir.innerHTML = num1.replace(".",",");             
          num2 = "";
          exibirSecundario2.innerHTML = "";
@@ -796,7 +829,15 @@ function multFunction(){
          verificarVirugla = true;       
          num1 = Number(resultado);
          num1 = verificarToFixedClass.verificarNumero(num1);
-         exibirSecundario1.innerHTML = num1.replace(".", ",");
+          if(verificarRaiz === true){
+            exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+            verificarRaiz = false;
+         }else if(verificarNumFracao === true){
+            exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else{
+            exibirSecundario1.innerHTML = num1.replace(".",",");
+         }
          exibir.innerHTML = num1.replace(".",",");     
          exibirSecundario2.innerHTML = "";
          igualSecundario.style.visibility = "hidden";
@@ -813,7 +854,15 @@ function multFunction(){
          salvarClick = "mult";
          verificarVirugla = true;   
          num1 = verificarToFixedClass.verificarNumero(num1);
-         exibirSecundario1.innerHTML = num1.replace(".", ",");
+          if(verificarRaiz === true){
+            exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+            verificarRaiz = false;
+         }else if(verificarNumFracao === true){
+            exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else{
+            exibirSecundario1.innerHTML = num1.replace(".",",");
+         }
          exibir.innerHTML = num1.replace(".",",");   
          exibirSecundario2.innerHTML = "";
          igualSecundario.style.visibility = "hidden";
@@ -833,7 +882,15 @@ function multFunction(){
          verificarVirugla = true;
          num1 = Number(num1) * Number(num2);
          num1 = verificarToFixedClass.verificarNumero(num1);
-         exibirSecundario1.innerHTML = num1.replace(".", ",");
+          if(verificarRaiz === true){
+            exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+            verificarRaiz = false;
+         }else if(verificarNumFracao === true){
+            exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else{
+            exibirSecundario1.innerHTML = num1.replace(".",",");
+         }
          exibir.innerHTML = num1.replace(".",",");    
          num2 = "";
          exibirSecundario2.innerHTML = "";
@@ -856,12 +913,18 @@ function divFunction(){
          if(num1 && num2){
             salvarClick = "div";
             verificarVirugla = true;    
-            
             num1 = Number(resultado);
             num1 = verificarToFixedClass.verificarNumero(num1);
-            exibirSecundario1.innerHTML = num1.replace(".", ",");
+             if(verificarRaiz === true){
+               exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+               verificarRaiz = false;
+            }else if(verificarNumFracao === true){
+               exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+               verificarNumFracao = false;
+            }else{
+               exibirSecundario1.innerHTML = num1.replace(".",",");
+            }
             exibir.innerHTML = num1.replace(".",",");
-            
             exibirSecundario2.innerHTML = "";
             igualSecundario.style.visibility = "hidden";
             sinal.innerHTML = "÷";
@@ -876,11 +939,17 @@ function divFunction(){
          }else{
             salvarClick = "div";
             verificarVirugla = true;
-            
             num1 = verificarToFixedClass.verificarNumero(num1);
-            exibirSecundario1.innerHTML = num1.replace(".", ",");
+             if(verificarRaiz === true){
+               exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+               verificarRaiz = false;
+            }else if(verificarNumFracao === true){
+               exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+               verificarNumFracao = false;
+            }else{
+               exibirSecundario1.innerHTML = num1.replace(".",",");
+            }
             exibir.innerHTML = num1.replace(".",",");
-            
             exibirSecundario2.innerHTML = "";
             igualSecundario.style.visibility = "hidden";
             sinal.innerHTML = "÷";
@@ -899,9 +968,16 @@ function divFunction(){
          verificarVirugla = true;
          num1 = Number(num1) / Number(num2);
          num1 = verificarToFixedClass.verificarNumero(num1);
-         exibirSecundario1.innerHTML = num1.replace(".", ",");
+          if(verificarRaiz === true){
+            exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+            verificarRaiz = false;
+         }else if(verificarNumFracao === true){
+            exibirSecundario1.innerHTML = `1/(${numFracao1.replace(".",",")})`;
+            verificarNumFracao = false;
+         }else{
+            exibirSecundario1.innerHTML = num1.replace(".",",");
+         }
          exibir.innerHTML = num1.replace(".",",");
-         
          num2 = "";
          exibirSecundario2.innerHTML = "";
          igualSecundario.style.visibility = "hidden";
@@ -960,11 +1036,13 @@ function elevadoFunction(){
    if(verificarFunction === true){
       if(num1){
          num1 = num1 * num1;
+         num1 = verificarToFixedClass.verificarNumero(num1);
          exibir.innerHTML = num1.replace(".",",");
       }
    }else if(verificarFunction === false){
       if(num2){
       num2 = num2 * num2;
+      num2 = verificarToFixedClass.verificarNumero(num2);
       exibir.innerHTML = num2.replace(".",",");
       }
    }
@@ -1012,6 +1090,7 @@ function raizFunction() {
          console.log("numero real " + num2);
          num2 = verificarToFixedClass.verificarNumero(num2);
          exibir.innerHTML = num2.replace(".",",");
+         verificarRaiz = true;
          break; // Sai do loop quando a precisão é alcançada ou após um número máximo de iterações
        }
          

@@ -298,8 +298,6 @@ function CEFunction(){
          num1 = "";
          exibir.innerHTML = "0";
          verificarVirugla = true;
-         console.log("teste1");
-         console.log(num1);
       }
    }else if(verificarNum === false){
       if(num1 && num2 && resultado){
@@ -318,18 +316,14 @@ function CEFunction(){
          verificarElevado = false;
          verificarRaiz = false;
          verificarNumFracao = false;
-         console.log("teste1");
       }else if(num1 && num2){
          num2 = "";
          exibir.innerHTML = "0";
          verificarVirugla = true;
-         console.log("teste2");
-         console.log(num2);
       }else if(num1 && (num2 === "" || num2 === 0)){
          num2 = "";
          exibir.innerHTML = "0";
          verificarVirugla = true;
-         console.log("teste3");
       }
    }
 }
@@ -340,13 +334,11 @@ function apagarFunction(){
       if(verificarApagarNum1 === true){
          if (num1.length > 0) {
             num1 = num1.slice(0, -1);
-      
             var ultimoCaractere = num1.slice(-1);
             if(ultimoCaractere === "." || ultimoCaractere === ","){
                verificarVirugla = true;
             }
             exibir.innerHTML = num1.replace(".",",");
-            console.log("num apaga");
          }
          if(num1 === ""){
             exibir.innerHTML = "0";
@@ -354,12 +346,8 @@ function apagarFunction(){
       }
    }else if(verificarNum === false){
        if(verificarApagarNum2 === true){
-         console.log(num2);
-         console.log(num2.length);
          if (num2.length > 0) {
-            console.log("apagar else");
             num2 = num2.slice(0, -1);
-
             var ultimoCaractere = num2.slice(-1);
             if(ultimoCaractere === "." || ultimoCaractere === ","){
                verificarVirugla = true;
@@ -379,7 +367,6 @@ function apagarFunction(){
          verificarNum = true;
          verificarApagarNum2 = true;
          verificarApagarNum1 = false;
-         console.log("apagar if");
          }
    }
 }
@@ -412,10 +399,6 @@ function igualFunction(){
          verificarNum = false;
          verificarFunction = true;
          verificarApagarNum2 = false;
-         console.log("igual soma1");
-         console.log(num1);
-         console.log(num2);
-         console.log(resultado);
       }
    }
    else if(salvarClick === "sub"){  
@@ -443,7 +426,6 @@ function igualFunction(){
             verificarNum = false;
             verificarFunction = true;
             verificarApagarNum2 = false;
-            console.log("igual sub1");
          } 
    }
    else if(salvarClick === "mult"){ 
@@ -471,7 +453,6 @@ function igualFunction(){
          verificarNum = false;
          verificarFunction = true;
          verificarApagarNum2 = false;
-         console.log("igual mult1");
       }
    }   
    else if(salvarClick === "div"){ 
@@ -499,7 +480,6 @@ function igualFunction(){
          verificarNum = false;
          verificarFunction = true;
          verificarApagarNum2 = false;
-         console.log("igual sub1");
       }
    }
    else if(salvarClick === ""){
@@ -511,11 +491,6 @@ function igualFunction(){
                resultado = Number(resultado) + Number(num2);
                resultado = verificarToFixedClass.verificarNumero(resultado);
                exibir.innerHTML = resultado.replace(".", ",");
-
-               console.log("vazio soma");
-               console.log(num1);
-               console.log(num2);
-               console.log(resultado);
          }
          else if(verificarEnter === "sub"){  
                num1 = Number(num1) - Number(num2);
@@ -525,11 +500,6 @@ function igualFunction(){
                resultado = Number(resultado) - Number(num2);
                resultado = verificarToFixedClass.verificarNumero(resultado);
                exibir.innerHTML = resultado.replace(".", ",");
-
-               console.log("vazio sub");
-               console.log(num1);
-               console.log(num2);
-               console.log(resultado);
          }
          else if(verificarEnter === "mult"){
                num1 = Number(num1) * Number(num2);
@@ -539,11 +509,6 @@ function igualFunction(){
                resultado = Number(resultado) * Number(num2);
                resultado = verificarToFixedClass.verificarNumero(resultado);
                exibir.innerHTML = resultado.replace(".", ",");
-
-               console.log("vazio mult");
-               console.log(num1);
-               console.log(num2);
-               console.log(resultado);
          }
          else if(verificarEnter === "div"){
             num1 = Number(num1) / Number(num2);
@@ -554,10 +519,6 @@ function igualFunction(){
             resultado = verificarToFixedClass.verificarNumero(resultado);
             exibir.innerHTML = resultado.replace(".", ",");
 
-            console.log("vazio div");
-            console.log(num1);
-            console.log(num2);
-            console.log(resultado);
          }
    } 
 }
@@ -701,11 +662,6 @@ function somaFunction(){
          verificarNum = false;
          verificarFunction = false;
          verificarApagarNum2 = true;
-
-         console.log("if true soma1 --");
-         console.log(num1);
-         console.log(num2);
-         console.log(resultado);
       }else{
          salvarClick = "soma";
          verificarVirugla = true;
@@ -731,11 +687,6 @@ function somaFunction(){
          verificarNum = false;
          verificarFunction = false;
          verificarApagarNum2 = true;
-
-         console.log("else True soma1 --");
-         console.log(num1);
-         console.log(num2);
-         console.log(resultado);
          }
       }
       else if(verificarFunction === false){
@@ -762,11 +713,6 @@ function somaFunction(){
          sinal.innerHTML = "+";
          verificarNum = false;
          verificarApagarNum2 = true;
-
-         console.log("false Soma1 --");
-         console.log(num1);
-         console.log(num2);
-         console.log(resultado);
       }
    }
 }
@@ -800,11 +746,6 @@ function subFunction(){
             verificarNum = false;
             verificarFunction = false;
             verificarApagarNum2 = true;
-
-            console.log("if true sub1 --");
-            console.log(num1);
-            console.log(num2);
-            console.log(resultado);
          }else{
             salvarClick = "sub";
             verificarVirugla = true;
@@ -829,11 +770,6 @@ function subFunction(){
             verificarFunction = false;
             verificarNum = false;
             verificarApagarNum2 = true;
-
-            console.log("TRUE sub1 --");
-            console.log(num1);
-            console.log(num2);
-            console.log(resultado);
          }
       }
       else if(verificarFunction === false){      
@@ -860,11 +796,6 @@ function subFunction(){
          sinal.innerHTML = "-";
          verificarNum = false;
          verificarApagarNum2 = true;
-
-         console.log("false sub1 --");
-         console.log(num1);
-         console.log(num2);
-         console.log(resultado);
       }
    }
 }
@@ -897,11 +828,6 @@ function multFunction(){
          num2 = "";
          verificarNum = false;
          verificarFunction = false;
-
-         console.log("if true mult1 --");
-         console.log(num1);
-         console.log(num2);
-         console.log(resultado);
          }else{
          salvarClick = "mult";
          verificarVirugla = true;   
@@ -925,11 +851,6 @@ function multFunction(){
          num2 = "";
          verificarNum = false;
          verificarFunction = false;
-
-         console.log("else True mult1 --");
-         console.log(num1);
-         console.log(num2);
-         console.log(resultado);
          }
       }
       else if(verificarFunction === false){
@@ -955,11 +876,6 @@ function multFunction(){
          igualSecundario.style.visibility = "hidden";
          sinal.innerHTML = "×";
          verificarNum = false;
-
-         console.log("false Mult1 --");
-         console.log(num1);
-         console.log(num2);
-         console.log(resultado);
       }
    }
 }
@@ -992,11 +908,6 @@ function divFunction(){
             num2 = "";
             verificarNum = false;
             verificarFunction = false;
-
-            console.log("if true div1 --");
-            console.log(num1);
-            console.log(num2);
-            console.log(resultado);
          }else{
             salvarClick = "div";
             verificarVirugla = true;
@@ -1020,11 +931,6 @@ function divFunction(){
             num2 = "";
             verificarNum = false;
             verificarFunction = false;
-
-            console.log("else True div1 --");
-            console.log(num1);
-            console.log(num2);
-            console.log(resultado);
          }
       }
       else if(verificarFunction === false){
@@ -1050,11 +956,6 @@ function divFunction(){
          igualSecundario.style.visibility = "hidden";
          sinal.innerHTML = "÷";
          verificarNum = false;
-
-         console.log("false div1 --");
-         console.log(num1);
-         console.log(num2);
-         console.log(resultado);
       }
    }
 }
@@ -1067,20 +968,10 @@ function porcentagemFunction(){
          num2 = verificarToFixedClass.verificarNumero(num2);
          exibirSecundario2.innerHTML = num2.replace(".",",");
          exibir.innerHTML = num2.replace(".",",");
-
-         console.log("if porcentagem1 --");
-         console.log(num1);
-         console.log(num2);
-         console.log(resultado);
    }else if(num1 && num2){
       verificarVirugla = true;
       num2 = verificarToFixedClass.verificarNumero(num2);
       exibirSecundario2.innerHTML = num2.replace(".",",");
-
-      console.log("else if porcentagem1 --");
-      console.log(num1);
-      console.log(num2);
-      console.log(resultado);
    }
 }
 
@@ -1146,21 +1037,18 @@ function raizFunction() {
       let estimativaAtual = estimativaInicial;
       num1Raiz = num1;
       exibirSecundario1.innerHTML = "(√"+num1Raiz.replace(".",",")+")";
+      
      while (true) {
        let novaEstimativa = 0.5 * (estimativaAtual + numero / estimativaAtual);
-         
        if (Math.abs(novaEstimativa - estimativaAtual) < precisao || iteracoes >= 1000) {
          num1 = novaEstimativa; // Atribui a estimativa atual a 'numeroReal' quando a precisão é alcançada ou após um número máximo de iterações    
-         console.log("numero real " + num1);
          num1 = verificarToFixedClass.verificarNumero(num1);
          exibir.innerHTML = num1.replace(".",",");
          verificarRaiz = true;
          break; // Sai do loop quando a precisão é alcançada ou após um número máximo de iterações
        }
-         
        estimativaAtual = novaEstimativa;
        iteracoes++;
-       console.log("estimativa " + estimativaAtual);
      }
    }else if(verificarNum === false){
       let precisao2 = 1e-6;
@@ -1170,21 +1058,18 @@ function raizFunction() {
       let estimativaAtual2 = estimativaInicial2;
       num2Raiz = num2;
       exibirSecundario2.innerHTML = "(√"+num2Raiz.replace(".",",")+")";
+
      while (true) {
        let novaEstimativa2 = 0.5 * (estimativaAtual2 + numero2 / estimativaAtual2);
-         
        if (Math.abs(novaEstimativa2 - estimativaAtual2) < precisao2 || iteracoes2 >= 1000) {
          num2 = novaEstimativa2; // Atribui a estimativa atual a 'numeroReal' quando a precisão é alcançada ou após um número máximo de iterações    
-         console.log("numero real " + num2);
          num2 = verificarToFixedClass.verificarNumero(num2);
          exibir.innerHTML = num2.replace(".",",");
          verificarRaiz = true;
          break; // Sai do loop quando a precisão é alcançada ou após um número máximo de iterações
        }
-         
        estimativaAtual2 = novaEstimativa2;
        iteracoes2++;
-       console.log("estimativa " + estimativaAtual2);
      }
    }
 }
@@ -1209,7 +1094,3 @@ function fracaoFunction(){
 }
 
 
-// Exemplo de uso:
-// let numero = 25;
-// let raiz = calcularRaizQuadrada(numero);
-// console.log("A raiz quadrada de", numero, "é:", raiz);

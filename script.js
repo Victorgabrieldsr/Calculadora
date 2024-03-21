@@ -586,10 +586,6 @@ document.addEventListener('keydown', function(event){
    }
 });
 
-//colocar comentario quando terminar tudo!
-
-//Função 
-
 virgula.addEventListener("click", virgulaFunction);
 function virgulaFunction(){
    if(verificarVirugla === true){
